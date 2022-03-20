@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Sidenav from './components/Sidenav/Sidenav';
+import Banner from './components/banner/Banner';
+import Announcecard from './components/announcecard/Announcecard';
+import Todocard from './components/Todocard/Todocard';
+import { Row, Col, Container} from 'react-bootstrap';
+
 
 function App() {
   return (
+
+    // Add a container in the main app to fix navbar
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Banner></Banner>
+     <Sidenav></Sidenav>
+     <Container>
+       <Row>
+        <Col>
+         <Announcecard></Announcecard>
+        </Col>
+        <Col>
+          <Todocard></Todocard>
+        </Col>
+       </Row>
+     
+     </Container>
+    
     </div>
   );
 }
 
 export default App;
+
+// import Navbar2 from './components/navbar/Navbar2';
+// import Banner from './components/banner/Banner';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+ {/* <Banner/>
+    <Router>
+      <Navbar2/>
+      <Routes>
+      <Route path='/' />
+      </Routes>
+    </Router> */}

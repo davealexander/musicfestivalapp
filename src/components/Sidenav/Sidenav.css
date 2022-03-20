@@ -1,0 +1,44 @@
+.sideNavContainer{
+    justify-content: left;
+    position: left;
+    display:contents;
+}
+.navBrand{
+    justify-content: left;
+    display: flex;
+    position: left;
+}
+.navColor{
+    background-color: navy;
+    color: goldenrod;
+    width: 250px;
+    height:100vh;
+    display:list-item;
+    justify-content:  center;
+    position: fixed;
+    top: 0;
+    text-decoration: none;
+  }
+.navText{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+    text-decoration: none;
+}
+.navText a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    width: 95%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+.navText a:hover{
+    background-color: goldenrod;
+}
