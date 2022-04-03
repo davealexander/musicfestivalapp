@@ -8,3 +8,13 @@
 #h1banner{
     color:black;
 }
+
+.loginPic{
+    margin-left: 10px;
+    border-radius: 10px;
+    
+}
+
+.loginPic:hover{
+    background-color: goldenrod;
+}
