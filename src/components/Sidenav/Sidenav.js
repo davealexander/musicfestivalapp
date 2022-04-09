@@ -16,10 +16,10 @@ function Sidenav() {
               <li className = 'navText'><a href='/auditions'>Auditions</a></li>
               <li className = 'navText'><a href='/festivals'>Festivals</a></li>
               <li className = 'navText'><a href='/StudentRegistration'>Registration</a></li>
-              <li className = 'navText'><a href='/scheduler'>Scheduler</a></li>
-              <li className = 'navText'><a href='/scheduler'>Scoresheets</a></li>
-              <li className = 'navText'><a href='/myprofile'>My Profile</a></li>
-              <li className = 'navText'><a href='/settings'>Settings</a></li>
+              <li className = 'navText'><a href='/Scheduler'>Scheduler</a></li>
+              <li className = 'navText'><a href='/Scoresheets'>Scoresheets</a></li>
+              {/* <li className = 'navText'><a href='/myprofile'>My Profile</a></li>
+              <li className = 'navText'><a href='/settings'>Settings</a></li> */}
           </ul>
         </Navbar>
         </Container>
