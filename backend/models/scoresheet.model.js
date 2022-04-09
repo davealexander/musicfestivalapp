@@ -11,9 +11,9 @@ const ScoresheetSchema = new Schema({
     Comment2: {type: String, required: true},
     Comment3: {type: String, required: true},
     Score1: {type:Number, required: true},
-    Score2: {type:Number, required: true},
-    TotalScore: {type:Number, required: true},
-    Date: {type: Date, required: true}
+    // Score2: {type:Number, required: true},
+    // TotalScore: {type:Number, required: true},
+    // Date: {type: Date, required: true}
 }, {
     timestamps: true,
 });

@@ -1,10 +1,11 @@
 //Imports
 //express is middleware that helps talk to the server
-const express = require('express');
+import express from "express";
 //cors is a way to provide information across websites
-const cors = require('cors');
+import cors from "cors";
 //mongoose is a library that helps talk to the mongodb database
-const mongoose = require('mongoose')
+import mongoose from "mongoose";
+import App from "../src/App.js"
 
 //dotenv is an environment folder that keeps secured connection authentications and tokens
 require('dotenv').config();
@@ -14,7 +15,14 @@ const port = process.env.PORT || 5001;
 
 //middleware
 app.use(cors());
+//server can accept json in the body of a request
 app.use(express.json());
+
+//Routes
+app.use("/", App);
+app.use("*", (req, res) => res.status(404).json({error: "404 page not found"}));
+
+
 
 //Connection to Database
 const uri = process.env.ATLAS_URI;
@@ -35,3 +43,5 @@ connection.once('open', () => {
 app.listen(port, () => {
     console.log(`Server is running on port : ${port}`);
 });
+
+export default app; 
