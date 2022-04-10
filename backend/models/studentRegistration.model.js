@@ -34,7 +34,7 @@ const studentRegSchema = new Schema({
         trim: true,
         minlength: 3
     },
-    School:{
+    school:{
         type: String,
         required: true,
         unique: true,
@@ -48,12 +48,16 @@ const studentRegSchema = new Schema({
     ensemble2:{
         type: String,
         required: true,
-    },
-    preference:{
-        type: Boolean,
-        required: true,
     }
+    // preference:{
+    //     type: Boolean,
+    //     required: true,
+    // }
 }, 
 {
     timestamps: true,
 });
+
+const StudentRegistration = mongoose.model('StudentRegistration', studentRegSchema);
+
+module.exports = StudentRegistration;

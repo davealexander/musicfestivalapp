@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema; 
 
 const ScoresheetSchema = new Schema({
-    StudentName: {type: String, required: true},
-    Ensemble: {type: String, required: true},
+    StudentName: {type: String, trim: true, required: true},
+    Ensemble: {type: String, trim: true, required: true},
     Scale1: {type: Number, required: true},
     Scale2: {type: Number, required: true},
     Scale3: {type: Number, required: true},
-    Comment1: {type: String, required: true},
-    Comment2: {type: String, required: true},
-    Comment3: {type: String, required: true},
+    Comment1: {type: String, trim: true, required: true},
+    Comment2: {type: String, trim: true, required: true},
+    Comment3: {type: String, trim: true, required: true},
     Score1: {type:Number, required: true},
     // Score2: {type:Number, required: true},
     // TotalScore: {type:Number, required: true},
@@ -17,3 +17,6 @@ const ScoresheetSchema = new Schema({
 }, {
     timestamps: true,
 });
+
+const ScoresheetModel = mongoose.model("scoresheet",ScoresheetSchema)
+module.exports = ScoresheetModel; 
