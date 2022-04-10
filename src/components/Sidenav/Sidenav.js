@@ -13,13 +13,9 @@ function Sidenav() {
           <ul>
               <h2>Maine Music Educator Association</h2>
               <li className = 'navText'><a href='/home'>Home</a></li>
-              <li className = 'navText'><a href='/auditions'>Auditions</a></li>
-              <li className = 'navText'><a href='/festivals'>Festivals</a></li>
               <li className = 'navText'><a href='/StudentRegistration'>Registration</a></li>
               <li className = 'navText'><a href='/Scheduler'>Scheduler</a></li>
               <li className = 'navText'><a href='/Scoresheets'>Scoresheets</a></li>
-              {/* <li className = 'navText'><a href='/myprofile'>My Profile</a></li>
-              <li className = 'navText'><a href='/settings'>Settings</a></li> */}
           </ul>
         </Navbar>
         </Container>
