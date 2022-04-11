@@ -5,16 +5,15 @@ const studentRegSchema = new Schema({
     firstName: {
         type: String,
         required: true,
-        unique: true,
         trim: true,
-        minlength: 3
+        minlength: 2
     },
     lastName:{
         type: String,
         required: true,
         unique: true,
         trim: true,
-        minlength: 3
+        minlength: 2
     },
     grade:{
         type: Number,
@@ -29,7 +28,6 @@ const studentRegSchema = new Schema({
     },
     instrument2:{
         type: String,
-        required: true,
         unique: true,
         trim: true,
         minlength: 3

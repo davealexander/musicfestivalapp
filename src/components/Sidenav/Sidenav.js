@@ -12,7 +12,7 @@ function Sidenav() {
           <Navbar className='navColor' variant="dark">    
           <ul>
               <h2>Maine Music Educator Association</h2>
-              <li className = 'navText'><a href='/home'>Home</a></li>
+              <li className = 'navText'><a href='/'>Home</a></li>
               <li className = 'navText'><a href='/StudentRegistration'>Registration</a></li>
               <li className = 'navText'><a href='/Scheduler'>Scheduler</a></li>
               <li className = 'navText'><a href='/Scoresheets'>Scoresheets</a></li>
