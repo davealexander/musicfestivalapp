@@ -50,7 +50,7 @@ router.route('/:id').get((req,res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//Delete by MongodDB ID 
+//Update by MongodDB ID 
 router.route('/update/:id').post((req,res) => {
     Studentregistration.findById(req.params.id)
         .then(registration => {
