@@ -1,22 +1,24 @@
-.loginCard{
-    width: 20em;
-    height: 50em;
-    margin-top:100px;
-    margin-left:700px;
-}
-.login{
-    padding: 10px 0px 10px 10px;
-    color:rgb(218, 165, 32);
-    background-color: navy;
-}
 .logoCard{
     width: 20em;
     height: 50em;
+    float: left;
     margin-top:100px;
     margin-left:200px;
 }
 .logo{
     padding: 10px 0px 10px 10px;
-    color:goldenrod;
+    color:rgb(253,182,20);
+    background-color: navy;
+}
+.loginCard{
+    width: 20em;
+    height: 50em;
+    float: right;
+    margin-top:100px;
+    margin-left:700px;
+}
+.login{
+    padding: 10px 0px 10px 10px;
+    color:rgb(253,182,20);
     background-color: navy;
 }
