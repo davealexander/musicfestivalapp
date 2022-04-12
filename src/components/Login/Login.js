@@ -11,44 +11,34 @@ function Login() {
     return (
         <Container>
             <Row>
-        {/*<div as={Col} className="logoCard">*/}
-        <div style={{width:"200px"}} className="logoCard">
-        
-            <img className='MMEAlogo' src={MMEAlogo} alt = "MMEAlogo" width="300" height="300"></img> 
-            <Button variant="primary" type="submit" style={{backgroundColor: "rgb(253,182,20)"}}>
-                NEED AN ACCOUNT?
-            </Button>
-        </div>
-        <div style={{width:"500px"}}>
-            {/*<Form as ={Col} className="loginCard">*/}
-            <Form as ={Col} className="loginCard">
-                <Form.Label style={{fontSize:"30px"}}> Sign In</Form.Label>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                {/*<Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>*/}
-                </Form.Group>
+                <div style={{width:"300px"}} className="logoCard">
+                    <img className='MMEAlogo' src={MMEAlogo} alt = "MMEAlogo" width="375" height="375"></img> 
+                    <Button variant="primary" type="submit" style={{backgroundColor: "rgb(253,182,20)"}}>
+                        NEED AN ACCOUNT?
+                    </Button>
+                </div>
+                <div style={{width:"500px"}}>
+                    <Form as ={Col} className="loginCard">
+                        <Form.Label style={{fontSize:"30px"}}> Sign In</Form.Label>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" />
+                        </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Remember me" />
-            </Form.Group>
-            <Button variant="primary" type="submit" style={{backgroundColor: "rgb(253,182,20)"}}>
-                SIGN IN
-            </Button>
-
-        {/*<Link to="/Register">
-            Forgot your password?
-            </Link>*/}
-            </Form>
-        </div>
-        </Row>
-    </Container>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Password" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Remember me" />
+                        </Form.Group>
+                        <Button variant="primary" type="submit" style={{backgroundColor: "rgb(253,182,20)"}}>
+                            SIGN IN
+                        </Button>
+                    </Form>
+                </div>
+            </Row>
+        </Container>
     )
 
 }

@@ -1,0 +1,11 @@
+.registerCard{
+    width: 20em;
+    height: 50em;
+    margin-top:100px;
+    margin-left:400px;
+}
+.register{
+    padding: 10px 0px 10px 10px;
+    color:goldenrod;
+    background-color: navy;
+}
