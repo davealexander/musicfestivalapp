@@ -6,36 +6,33 @@ const studentRegSchema = new Schema({
         type: String,
         required: true,
         trim: true,
-        minlength: 2
+        minlength: 2,
     },
     lastName:{
         type: String,
         required: true,
-        unique: true,
         trim: true,
         minlength: 2
     },
     grade:{
         type: Number,
         required: true,
+        trim: true
     },
     instrument1:{
         type: String,
         required: true,
-        unique: true,
         trim: true,
-        minlength: 3
+        minlength: 2
     },
     instrument2:{
         type: String,
-        unique: true,
         trim: true,
-        minlength: 3
+        minlength: 2
     },
     school:{
         type: String,
         required: true,
-        unique: true,
         trim: true,
         minlength: 3
     },
@@ -45,17 +42,17 @@ const studentRegSchema = new Schema({
     },
     ensemble2:{
         type: String,
-        required: true,
-    }
-    // preference:{
-    //     type: Boolean,
-    //     required: true,
-    // }
+    },
+    preference:{
+        type: String,
+    },
 }, 
 {
     timestamps: true,
 });
 
+//Allows the use of studentRegSchema and associates with the variable StudentRegistration. 
 const StudentRegistration = mongoose.model('StudentRegistration', studentRegSchema);
 
+//exports the StudentRegistration Schema 
 module.exports = StudentRegistration;

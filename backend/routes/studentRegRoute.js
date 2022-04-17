@@ -19,6 +19,7 @@ router.route('/add').post((req,res) => {
    const school = req.body.school;
    const ensemble1 = req.body.ensemble1;
    const ensemble2 = req.body.ensemble2;
+   //const preference = req.body.preference;
 
    const newRegistration = new Studentregistration({
        firstName,
@@ -29,6 +30,7 @@ router.route('/add').post((req,res) => {
        school,
        ensemble1,
        ensemble2,
+       //preference,
    });
 
    newRegistration.save()
@@ -62,6 +64,7 @@ router.route('/update/:id').post((req,res) => {
              registration.school = req.body.school;
              registration.ensemble1 = req.body.ensemble1;
              registration.ensemble2 = req.body.ensemble2;
+             //registration.preference = req.body.preference;
 
              registration.save()
                 .then(() =>res.json('Registration Updated!'))
