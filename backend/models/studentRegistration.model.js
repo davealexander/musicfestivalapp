@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ScoresheetModel = require('./scoresheet.model');
 const Schema = mongoose.Schema; 
 
 const studentRegSchema = new Schema({

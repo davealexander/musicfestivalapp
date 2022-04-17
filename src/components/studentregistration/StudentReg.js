@@ -6,6 +6,7 @@ import axios from 'axios';
 
 
 
+//Function that creates JSON body to submit to MONGODB server
 function StudentReg() {
    const [regData, setRegData] = useState({
       firstName: "",
@@ -19,6 +20,7 @@ function StudentReg() {
       preference: "",
    });
    
+//Uses Axios library to post JSON info from StudentReg to MongoDB server. 
    const handleSubmit = e => {
       //Stops page from refreshing
       e.preventDefault();
@@ -138,7 +140,7 @@ function StudentReg() {
 
             {/*Ensembles 2*/}
             <Form.Group className="mb-3" controlId="Grade">
-               <Form.Label>Ensemble 2</Form.Label>
+               <Form.Label>Ensemble 2 (Optional)</Form.Label>
                <Form.Select 
                value={regData.ensemble2}
                onChange={(e) => setRegData({...regData, ensemble2: e.target.value})}
@@ -154,11 +156,11 @@ function StudentReg() {
 
              {/*Ensemble Preference*/}
              <Form.Group className="mb-3" controlId="Grade">
-               <Form.Label>Preference</Form.Label>
+               <Form.Label>Preference (Optional)</Form.Label>
                <Form.Select
                // value={regData.preference}
                // onChange={(e) => setRegData({...regData, preference: e.target.value})} 
-               aria-label='"Default slect example'>
+               aria-label='"Default select example'>
                    <option value ="">-</option>
                    <option value ="Concert Band">Concert Band</option>
                    <option value ="Orchestra">Orchestra</option>

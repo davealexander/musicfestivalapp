@@ -27,9 +27,13 @@ connection.once('open', () => {
 });
 
 //Routes
+//StudentRegistration Route
 const studentRegRouter = require('./routes/studentRegRoute');
-
 app.use('/studentregistration', studentRegRouter);
+
+//Scoresheets Route
+const scoresheetRouter = require('./routes/scoresheetRoute');
+app.use('/scoresheets', scoresheetRouter);
 
 //Server listening
 app.listen(port, () => {
