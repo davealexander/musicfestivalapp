@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form, Container, Row, Button } from 'react-bootstrap';
+import { Form, Container, Row, Button, FormLabel } from 'react-bootstrap';
 import './scoresheet.css'
 import axios from 'axios';
 
 function Scoresheet() {
   //Function that creates JSON body to submit to MONGODB server  
   const [regData, setRegData] = useState({
+     studentId: "",
      scale1: "",
      scale2: "",
      scale3: "",
@@ -24,15 +25,33 @@ function Scoresheet() {
      .then(res =>console.log(res.data))      
   };
 
+const [posts, setPost] = useState([]);
+
+useEffect(() => {
+   // axios.get(`http://localhost:5001/studentregistration/`).then(res =>{setPersons(res.data);});
+    axios.get('http://localhost:5001/studentregistration/').then((response) => {setPost(response.data); console.log(response.data);});
+   },
+   []);
+
     return (
-        <Container>
+       <Container>
         <Row style={{paddingLeft: "200px"}}>
 
         <div className= "scoresheet"  style={{width:"1000px"}}> 
            <Form onSubmit={handleSubmit}>
               <h3>Scoresheet</h3>
               <h4>District 2 - Band</h4>
-              <h4>John Smith - Grade 10 - Saxophone</h4>
+
+            <Form.Group className="mb-3" controlId='Student'>
+               <Form.Label>
+                  <Form.Select className='form-select form-select-md mb-3'
+                  value = {regData.studentId}
+                  onChange={(e) => setRegData({...regData, studentId: e.target.value})}
+                  >
+                     {posts.map((post)=> <option key={post.id}>{post.firstName + " " + post.lastName + " " + post.instrument1}</option>)}
+                  </Form.Select>
+              </Form.Label>
+            </Form.Group>
 
             {/*Scale 1  REFACTOR for */}
             <Form.Group className="mb-3" controlId="scale1">

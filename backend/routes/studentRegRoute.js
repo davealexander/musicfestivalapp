@@ -19,7 +19,7 @@ router.route('/add').post((req,res) => {
    const school = req.body.school;
    const ensemble1 = req.body.ensemble1;
    const ensemble2 = req.body.ensemble2;
-   //const preference = req.body.preference;
+   const preference = req.body.preference;
 
    const newRegistration = new Studentregistration({
        firstName,
@@ -30,7 +30,7 @@ router.route('/add').post((req,res) => {
        school,
        ensemble1,
        ensemble2,
-       //preference,
+       preference,
    });
 
    newRegistration.save()

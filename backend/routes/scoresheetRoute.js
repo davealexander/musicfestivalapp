@@ -11,6 +11,7 @@ router.route('/').get((req,res) => {
 
 //POST / Create
 router.route('/add').post((req,res) => {
+   const studentId = req.body.studentId;
    const scale1 = req.body.scale1;
    const scale2 = req.body.scale2;
    const scale3 = req.body.scale3;
@@ -20,6 +21,7 @@ router.route('/add').post((req,res) => {
    const score = req.body.score;
 
    const submitScoresheet = new Scoresheet({
+        studentId,
         scale1,
         scale2,
         scale3,
@@ -52,8 +54,13 @@ router.route('/:id').get((req,res) => {
 router.route('/update/:id').post((req,res) => {
     Scoresheet.findById(req.params.id)
         .then(submission => {
-             
-             //registration.preference = req.body.preference;
+             submission.scale1 = req.body.scale1;
+             submission.scale2 = req.body.scale2;
+             submission.scale3 = req.body.scale3;
+             submission.comment1 = req.body.comment1;
+             submission.comment2 = req.body.comment2;
+             submission.comment3 = req.body.comment3;
+             submission.score = req.body.score; 
 
              submission.save()
                 .then(() =>res.json('Scoresheet Updated!'))

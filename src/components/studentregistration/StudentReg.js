@@ -8,6 +8,7 @@ import axios from 'axios';
 
 //Function that creates JSON body to submit to MONGODB server
 function StudentReg() {
+   //useState for submitting data to database
    const [regData, setRegData] = useState({
       firstName: "",
       lastName: "",
