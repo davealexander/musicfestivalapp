@@ -1,0 +1,11 @@
+.profileCard{
+    width: 20em;
+    height: 50em;
+    margin-top: 55px;
+    margin-left:200px;
+}
+.profile{
+    padding: 10px 0px 10px 10px;
+    color:goldenrod;
+    background-color: navy;
+}
