@@ -9,6 +9,7 @@ import { Row, Col, Container} from 'react-bootstrap';
 import StudentReg from './components/studentregistration/StudentReg';
 import {BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
 import Scoresheet from './components/Scoresheet/scoresheet';
+import MyProfile from './components/MyProfile/MyProfile';
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
      <Banner></Banner>
      <Routes>
        <Route path='/' element={<><Container><Row><Col><Announcecard/></Col><Col><Todocard/></Col></Row></Container></>}/>
-       <Route path='/StudentRegistration' element={<StudentReg/>}/>
-       <Route path='/Scoresheets' element={<Scoresheet/>}></Route> 
+       <Route path='/studentregistration' element={<StudentReg/>}/>
+       <Route path='/scoresheets' element={<Scoresheet/>}></Route>
+       <Route path='/myprofile' element={<MyProfile/>}></Route>
        
      </Routes>
    </Router>
