@@ -44,11 +44,10 @@ useEffect(() => {
 
             <Form.Group className="mb-3" controlId='Student'>
                <Form.Label>
-                  <Form.Select className='form-select form-select-md mb-3'
+                  <Form.Select className='form-select form-select-md mb-3' 
                   value = {regData.studentId}
-                  onChange={(e) => setRegData({...regData, studentId: e.target.value.post._id})}
-                  >
-                     {posts.map((post)=> <option key={post.id}>{post.firstName + " " + post.lastName + " " + post.instrument1}</option>)}
+                  onChange={(e) => setRegData({...regData, studentId: e.target.value})}>
+                     {posts.map((post)=> <option key={post.id} value = {post._id}>{post.firstName + " " + post.lastName}</option>)}
                   </Form.Select>
               </Form.Label>
             </Form.Group>

@@ -5,6 +5,7 @@ const ScoresheetSchema = new Schema({
     // district: {type: String, trim: true, required: true},
     // studentName: {type: String, trim: true, required: true},
     // ensemble: {type: String, trim: true, required: true},
+    studentId: {type:String, required: true},
     scale1: {type: Number, required: true},
     scale2: {type: Number, required: true},
     scale3: {type: Number, required: true},
