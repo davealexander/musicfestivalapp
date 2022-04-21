@@ -46,7 +46,7 @@ useEffect(() => {
                <Form.Label>
                   <Form.Select className='form-select form-select-md mb-3'
                   value = {regData.studentId}
-                  onChange={(e) => setRegData({...regData, studentId: e.target.value})}
+                  onChange={(e) => setRegData({...regData, studentId: e.target.value.post._id})}
                   >
                      {posts.map((post)=> <option key={post.id}>{post.firstName + " " + post.lastName + " " + post.instrument1}</option>)}
                   </Form.Select>

@@ -31,7 +31,7 @@ LoginSchema.pre('save', async function(next){
 });
 
 //Allows the use of loginSchema and associates with the variable Login. 
-const Login = mongoose.model('Login', loginSchema);
+const Login = mongoose.model('Login', LoginSchema);
 
 //exports the Login Schema 
 module.exports = Login;

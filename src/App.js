@@ -21,7 +21,6 @@ function App() {
        <Route path='/studentregistration' element={<StudentReg/>}/>
        <Route path='/scoresheets' element={<Scoresheet/>}></Route>
        <Route path='/myprofile' element={<MyProfile/>}></Route>
-       
      </Routes>
    </Router>
   );
