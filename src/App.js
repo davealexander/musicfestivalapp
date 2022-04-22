@@ -10,6 +10,9 @@ import StudentReg from './components/studentregistration/StudentReg';
 import {BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
 import Scoresheet from './components/Scoresheet/scoresheet';
 import MyProfile from './components/MyProfile/MyProfile';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import MyProfileForm from './components/MyProfileForm/MyProfileForm';
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
        <Route path='/studentregistration' element={<StudentReg/>}/>
        <Route path='/scoresheets' element={<Scoresheet/>}></Route>
        <Route path='/myprofile' element={<MyProfile/>}></Route>
+       <Route path='/Login' element={<Login/>}></Route>
+       <Route path='/Register' element={<Register/>}></Route>
+       <Route path='/MyProfileForm' element={<MyProfileForm/>}></Route>
      </Routes>
    </Router>
   );
