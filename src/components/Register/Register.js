@@ -21,9 +21,9 @@ function Register() {
         const [regData, setRegData] = useState({
             firstName: "",
             lastName: "",
-            email: "",
-            password: "",
-            passwordConf: "",
+            userEmail: "",
+            userPassword: "",
+            passwordConfirmation: "",
         });
     
         //Uses Axios library to post JSON info from submitScoresheet to MongoDB server. 
@@ -33,13 +33,6 @@ function Register() {
         axios.post(`http://localhost:5001/users/add`, regData)
         .then(res =>console.log(res.data))      
      };
-    
-    const [posts, setPost] = useState([]);
-    
-    useEffect(() => {
-       axios.get('http://localhost:5001/userregistration/').then((response) => {setPost(response.data); console.log(response.data);});
-      },
-      []);
 
     return (
         <Container>
@@ -52,33 +45,43 @@ function Register() {
                 </div>
 
                 <div style={{width:"400px"}}>
-                    <Form as ={Col} className="registerCard">
+                    <Form as ={Col} onSubmit={handleSubmit} className="registerCard">
                     <Form.Label style={{fontSize:"30px"}}>Create an Account</Form.Label>
 
                     <Row className="mb-3" >
                     <Form.Group as ={Col} controlId="firstName">
                         <Form.Label>First Name:</Form.Label>
-                        <Form.Control type="first name" placeholder="First Name" />
+                        <Form.Control type="first name" placeholder="First Name" 
+                            onChange={(e) => setRegData({...regData, firstName: e.target.value})} 
+                            value={regData.firstName} />
                     </Form.Group>
                     <Form.Group as ={Col} controlId="lastName">
                         <Form.Label>Last Name:</Form.Label>
-                        <Form.Control type="last name" placeholder="Last Name" />
+                        <Form.Control type="last name" placeholder="Last Name" 
+                            onChange={(e) => setRegData({...regData, lastName: e.target.value})} 
+                            value={regData.lastName} />
                     </Form.Group>
                     </Row>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" placeholder="Enter email" 
+                            onChange={(e) => setRegData({...regData, userEmail: e.target.value})} 
+                            value={regData.userEmail} />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" 
+                            onChange={(e) => setRegData({...regData, userPassword: e.target.value})} 
+                            value={regData.userPassword} />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formConfirmPassword">
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control type="confirm password" placeholder="Confirm Password" />
+                        <Form.Control type="confirm password" placeholder="Confirm Password" 
+                            onChange={(e) => setRegData({...regData, passwordConfirmation: e.target.value})} 
+                            value={regData.passwordConfirmation} />
                     </Form.Group>
 
             
