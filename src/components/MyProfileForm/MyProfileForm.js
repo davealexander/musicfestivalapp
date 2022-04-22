@@ -1,12 +1,43 @@
-import React from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import React, {useState, useEffect} from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { Card, Container } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import './MyProfileForm.css'
 import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
 function MyProfileForm() {
+    //Function that creates JSON body to submit to MONGODB server  
+    const [regData, setRegData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        MMEANumber: "",
+        school: "",
+        address1: "",
+        address2: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        phoneNumber: "",
+    });
+
+    //Uses Axios library to post JSON info from submitScoresheet to MongoDB server. 
+  const handleSubmit = e => {
+    //Stops page from refreshing
+    e.preventDefault();
+    axios.post(`http://localhost:5001/users/add`, regData)
+    .then(res =>console.log(res.data))      
+ };
+
+const [posts, setPost] = useState([]);
+
+useEffect(() => {
+   axios.get('http://localhost:5001/userregistration/').then((response) => {setPost(response.data); console.log(response.data);});
+  },
+  []);
+
     return (
         <Container>
             <Row>
