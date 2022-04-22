@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form, Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
+import { Form, Container, Row, Col, ListGroup, Button, ListGroupItem } from 'react-bootstrap';
 import './StudentReg.css'
 import axios from 'axios';
 
@@ -20,14 +20,22 @@ function StudentReg() {
       ensemble2: "",
       preference: "",
    });
-   
+
 //Uses Axios library to post JSON info from StudentReg to MongoDB server. 
    const handleSubmit = e => {
       //Stops page from refreshing
       e.preventDefault();
       axios.post(`http://localhost:5001/studentregistration/add`, regData)
-      .then(res =>console.log(res.data))      
+      .then(res =>console.log(res.data))
+      setRegData("");
    }
+
+   const [regStudents,setRegStudents] = useState([]);
+   
+   useEffect(() =>{
+      axios.get('http://localhost:5001/studentregistration/').then((response) => {setRegStudents(response.data);});
+   },
+   []);
 
    return (
       <Container>
@@ -35,11 +43,10 @@ function StudentReg() {
          <div style={{width:"500px"}}>
             <h2>Registered Students</h2>
             <ListGroup className = "studentList">
-               <ListGroup.Item className ="studentList">Student 1</ListGroup.Item>
-               <ListGroup.Item className ="studentList">Student 2</ListGroup.Item>
-               <ListGroup.Item className ="studentList">Student 3</ListGroup.Item>
-               <ListGroup.Item className ="studentList">Student 4</ListGroup.Item>
-               <ListGroup.Item className ="studentList">Student 5</ListGroup.Item>
+               {regStudents.map((student) => 
+               <ListGroup.Item key={student.id} value={student._id}>
+                  {student.firstName + " " + student.lastName + " - " + student.grade + " - " + student.school}
+                  </ListGroup.Item>)}
             </ListGroup>
          </div>
 
@@ -172,7 +179,7 @@ function StudentReg() {
             </Form.Group>
 
             {/*Submit button*/}
-            <Button variant="primary" type = "submit">Submit</Button>
+            <Button variant="primary" type = "submit" >Submit</Button>
          
 
            </Form>

@@ -28,8 +28,7 @@ function Scoresheet() {
 const [posts, setPost] = useState([]);
 
 useEffect(() => {
-   // axios.get(`http://localhost:5001/studentregistration/`).then(res =>{setPersons(res.data);});
-    axios.get('http://localhost:5001/studentregistration/').then((response) => {setPost(response.data); console.log(response.data);});
+    axios.get('http://localhost:5001/studentregistration/').then((response) => {setPost(response.data); });
    },
    []);
 
@@ -47,6 +46,7 @@ useEffect(() => {
                   <Form.Select className='form-select form-select-md mb-3' 
                   value = {regData.studentId}
                   onChange={(e) => setRegData({...regData, studentId: e.target.value})}>
+                     <option>-</option>
                      {posts.map((post)=> <option key={post.id} value = {post._id}>{post.firstName + " " + post.lastName}</option>)}
                   </Form.Select>
               </Form.Label>

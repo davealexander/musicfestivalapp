@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema; 
+const bcrypt = require('bcrypt');
 
 const userRegSchema = new Schema({
     firstName: {
@@ -37,6 +38,12 @@ const userRegSchema = new Schema({
 }, 
 {
     timestamps: true,
+});
+
+userRegSchema.pre('save', async function(next){
+    const salt = await bcrypt.genSalt();
+    this.userPassword = await bcrypt.hash(this.userPassword,salt);
+    next();
 });
 
 const UserRegistration = mongoose.model('UserRegistration', userRegSchema);
