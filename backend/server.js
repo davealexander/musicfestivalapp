@@ -35,6 +35,9 @@ app.use('/studentregistration', studentRegRouter);
 const scoresheetRouter = require('./routes/scoresheetRoute');
 app.use('/scoresheets', scoresheetRouter);
 
+const userRegistrationRouter = require('./routes/userRegRoute');
+app.use('/register',userRegistrationRouter );
+
 //Server listening
 app.listen(port, () => {
     console.log(`Server is running on port : ${port}`);

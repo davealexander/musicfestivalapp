@@ -46,7 +46,7 @@ function StudentReg() {
                {regStudents.map((student) => 
                <ListGroup.Item key={student.id} value={student._id}>
                   {student.firstName + " " + student.lastName + " - " + student.grade + " - " + student.school}
-                  </ListGroup.Item>)}
+                  </ListGroup.Item>)}ZC                                                               
             </ListGroup>
          </div>
 

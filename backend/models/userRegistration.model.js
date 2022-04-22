@@ -12,7 +12,6 @@ const userRegSchema = new Schema({
     lastName:{
         type: String,
         required: true,
-        unique: true,
         trim: true,
         minlength: 2
     },
@@ -21,7 +20,7 @@ const userRegSchema = new Schema({
         unique: true,
         required: true,
         trim: true,
-        minlength: 10,
+        minlength: 5,
     },
     userPassword: {
         type: String,
@@ -43,6 +42,7 @@ const userRegSchema = new Schema({
 userRegSchema.pre('save', async function(next){
     const salt = await bcrypt.genSalt();
     this.userPassword = await bcrypt.hash(this.userPassword,salt);
+    this.passwordConfirmation = await bcrypt.hash(this.passwordConfirmation,salt);
     next();
 });
 

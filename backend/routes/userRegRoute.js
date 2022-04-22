@@ -5,7 +5,7 @@ let UserRegistration = require('../models/userRegistration.model');
 //Base pull of info
 router.route('/').get((req,res) => {
     UserRegistration.find()
-        .then(registrations => res.json(registrations))
+        .then(userreg => res.json(userreg))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -15,17 +15,17 @@ router.route('/add').post((req,res) => {
    const lastName = req.body.lastName;
    const userEmail = req.body.userEmail;
    const userPassword = req.body.userPassword;
-   const passwordConf = req.body.passwordConf;
+   const passwordConfirmation = req.body.passwordConfirmation;
 
-   const newRegistration = new UserRegistration({
+   const newUser = new UserRegistration({
        firstName,
        lastName,
        userEmail,
        userPassword,
-       passwordConf,
+       passwordConfirmation,
    });
 
-   newRegistration.save()
+   newUser.save()
     .then(() => res.json('User Registered!'))
     .catch(err => res.status(400).json('Error: ' + err)); 
 });
@@ -33,28 +33,28 @@ router.route('/add').post((req,res) => {
 //GET by MongodDB ID 
 router.route('/:id').get((req,res) => {
     UserRegistration.findById(req.params.id)
-        .then(registration => res.json(registration))
+        .then(userreg => res.json(userreg))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 //Delete by MongodDB ID 
 router.route('/:id').get((req,res) => {
     UserRegistration.findByIdAndDelete(req.params.id)
-        .then(registration => res.json('Registration Deleted'))
+        .then(userreg => res.json('User Deleted'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 //Update by MongodDB ID 
 router.route('/update/:id').post((req,res) => {
     UserRegistration.findById(req.params.id)
-        .then(registration => {
-             registration.firstName = req.body.firstName;
-             registration.lastName = req.body.lastName;
-             registration.userEmail = req.body.userEmail;
-             registration.userPassword = req.body.userPassword;
-             registration.passwordConf = req.body.passwordConf;
+        .then(userreg => {
+             userreg.firstName = req.body.firstName;
+             userreg.lastName = req.body.lastName;
+             userreg.userEmail = req.body.userEmail;
+             userreg.userPassword = req.body.userPassword;
+             userreg.passwordConfirmation = req.body.passwordConfirmation;
 
-             registration.save()
+             userreg.save()
                 .then(() =>res.json('Registration Updated!'))
                 .catch(err => res.status(400).json('Error: ' + err));
 
