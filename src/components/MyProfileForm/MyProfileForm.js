@@ -27,14 +27,22 @@ function MyProfileForm() {
   const handleSubmit = e => {
     //Stops page from refreshing
     e.preventDefault();
-    axios.post(`http://localhost:5001/users/add`, regData)
+    axios.post(`http://localhost:5001/users/update/id:`, regData)
     .then(res =>console.log(res.data))      
  };
 
 const [posts, setPost] = useState([]);
 
+
+
+//MANUAL TEST
+//GRAB object ID of Registered User
+//Example go to mongodb.com, sign in with user, go to collections, in user registration grab objectID
+//i.e frank sinatra = objectid 62620cf2293866d93d449d68
+//fill in id url with this (i.e http://localhost:5001/userregistration/id:62620cf2293866d93d449d68)
+
 useEffect(() => {
-   axios.get('http://localhost:5001/userregistration/').then((response) => {setPost(response.data); console.log(response.data);});
+   axios.get('http://localhost:5001/userregistration/id:').then((response) => {setPost(response.data); console.log(response.data);});
   },
   []);
 
@@ -44,14 +52,14 @@ useEffect(() => {
                 <div style={{width:"500px", fontSize:"20px"}} className="profileCard">
                     <Form.Label style={{fontSize:"30px"}}>My Profile </Form.Label>
 
-                    <Form> 
+                    <Form onSubmit={handleSubmit}> 
 
                     <Row className="mb-3" >
                     <Form.Group as ={Col} controlId="firstName">
                         <Form.Label>First Name:</Form.Label>
                         <Form.Control type="first name" placeholder="First Name" 
                             onChange={(e) => setRegData({...regData, firstName: e.target.value})} 
-                            value={regData.firstName} />
+                            value={posts.firstName} />
                     </Form.Group>
                     <Form.Group as ={Col} controlId="lastName">
                         <Form.Label>Last Name:</Form.Label>

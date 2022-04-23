@@ -15,7 +15,6 @@ function Sidenav() {
               <li className = 'navText'><a href='/'>Home</a></li>
               <li className = 'navText'><a href='/MyProfile'>My Profile</a></li>
               <li className = 'navText'><a href='/StudentRegistration'>Registration</a></li>
-              <li className = 'navText'><a href='/Scheduler'>Scheduler</a></li>
               <li className = 'navText'><a href='/Scoresheets'>Scoresheets</a></li>
 
           </ul>
