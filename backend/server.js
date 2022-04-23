@@ -35,8 +35,17 @@ app.use('/studentregistration', studentRegRouter);
 const scoresheetRouter = require('./routes/scoresheetRoute');
 app.use('/scoresheets', scoresheetRouter);
 
+// userRegistration Route
 const userRegistrationRouter = require('./routes/userRegRoute');
 app.use('/register',userRegistrationRouter );
+
+// login Route
+const loginRouter = require('./routes/loginRoute');
+app.use('/register',loginRouter );
+
+// myProfile Route
+const myProfileRouter = require('./routes/myProfileRoute');
+app.use('/register',myProfileRouteRouter );
 
 //Server listening
 app.listen(port, () => {
