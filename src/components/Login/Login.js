@@ -30,12 +30,16 @@ function Login() {
                         <Form.Label style={{fontSize:"30px"}}> Sign In</Form.Label>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Control type="email" placeholder="Enter email"
+                            onChange={(e) => setRegData({...regData, userEmail: e.target.value})} 
+                            value={regData.userEmail} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control type="password" placeholder="Password"
+                            onChange={(e) => setRegData({...regData, userPassword: e.target.value})} 
+                            value={regData.userPassword} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Remember me" />
