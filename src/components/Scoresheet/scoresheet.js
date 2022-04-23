@@ -47,7 +47,7 @@ useEffect(() => {
                   value = {regData.studentId}
                   onChange={(e) => setRegData({...regData, studentId: e.target.value})}>
                      <option>-</option>
-                     {posts.map((post)=> <option key={post.id} value = {post._id}>{post.firstName + " " + post.lastName}</option>)}
+                     {posts.map((post)=> <option key={post._id} value = {post._id}>{post.firstName + " " + post.lastName}</option>)}
                   </Form.Select>
               </Form.Label>
             </Form.Group>

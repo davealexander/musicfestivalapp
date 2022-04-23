@@ -1,13 +1,24 @@
 import React, {useState, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form, Container, Row, Col, ListGroup, Button, ListGroupItem } from 'react-bootstrap';
+import { Form, Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
 import './StudentReg.css'
 import axios from 'axios';
 
-
+//Fix submission error: A component is changing from controlled input to be uncontrolled
 
 //Function that creates JSON body to submit to MONGODB server
 function StudentReg() {
+   const [success, setSuccess]= useState(false);   
+   
+   function msg(boolean){
+      if(boolean === true){
+         console.log("function hit");
+         return(
+         <p style={{color: "green"}}>Student Registered!</p>)
+      }
+   }
+
+   
    //useState for submitting data to database
    const [regData, setRegData] = useState({
       firstName: "",
@@ -24,45 +35,49 @@ function StudentReg() {
 //Uses Axios library to post JSON info from StudentReg to MongoDB server. 
    const handleSubmit = e => {
       //Stops page from refreshing
+      setSuccess(true)
       e.preventDefault();
       axios.post(`http://localhost:5001/studentregistration/add`, regData)
       .then(res =>console.log(res.data))
-      setRegData("");
+      e.target.reset(setRegData(""));
    }
 
    const [regStudents,setRegStudents] = useState([]);
    
    useEffect(() =>{
-      axios.get('http://localhost:5001/studentregistration/').then((response) => {setRegStudents(response.data);});
+      axios.get('http://localhost:5001/studentregistration/').then((res) => {setRegStudents(res.data);});
    },
    []);
 
    return (
       <Container>
+         {msg}
         <Row style={{paddingLeft: "200px"}}>
          <div style={{width:"500px"}}>
             <h2>Registered Students</h2>
             <ListGroup className = "studentList">
                {regStudents.map((student) => 
-               <ListGroup.Item key={student.id} value={student._id}>
+               <ListGroup.Item key={student._id} value={student._id}>
                   {student.firstName + " " + student.lastName + " - " + student.grade + " - " + student.school}
-                  </ListGroup.Item>)}ZC                                                               
+                  </ListGroup.Item>)}
             </ListGroup>
          </div>
 
          <div className= "studentregistration"  style={{width:"500px"}}> 
            <Form onSubmit={handleSubmit}>
             <h3>Student Registration</h3>
+               
                <Row className="mb-3">
+                  
                   {/*First Name*/}
                   <Form.Group as ={Col} controlId="firstName">
-                     <Form.Label> First Name</Form.Label>
-                     <Form.Control 
+                     <Form.Label>First Name</Form.Label>
+                     <Form.Control
                         onChange={(e) => setRegData({...regData, firstName: e.target.value})} 
-                        value={regData.firstName} 
+                        value={regData.firstName}
                         type ="String" 
-                        placeholder='i.e John'
-                     />
+                        placeholder='First Name'>
+                     </Form.Control>
                   </Form.Group>
 
                   {/*Last Name*/}
@@ -72,9 +87,10 @@ function StudentReg() {
                         onChange={(e) => setRegData({...regData, lastName: e.target.value})} 
                         value={regData.lastName} 
                         type ="String" 
-                        placeholder='i.e Smith'
+                        placeholder='Last Name'
                         />
                   </Form.Group>
+               
                </Row>
 
                {/*Grade*/}
@@ -179,9 +195,9 @@ function StudentReg() {
             </Form.Group>
 
             {/*Submit button*/}
-            <Button variant="primary" type = "submit" >Submit</Button>
-         
-
+            <Button variant="primary" type = "submit">Submit</Button>
+            {msg}
+      
            </Form>
         </div>
       </Row>

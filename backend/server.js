@@ -41,11 +41,11 @@ app.use('/register',userRegistrationRouter );
 
 // login Route
 const loginRouter = require('./routes/loginRoute');
-app.use('/register',loginRouter );
+app.use('/login',loginRouter);
 
 // myProfile Route
 const myProfileRouter = require('./routes/myProfileRoute');
-app.use('/register',myProfileRouteRouter );
+app.use('/myprofile', myProfileRouter);
 
 //Server listening
 app.listen(port, () => {
