@@ -12,14 +12,14 @@ function MyProfileForm() {
     const [regData, setRegData] = useState({
         firstName: "",
         lastName: "",
-        email: "",
+        userEmail: "",
         MMEANumber: "",
         school: "",
         address1: "",
         address2: "",
         city: "",
         state: "",
-        zipCode: "",
+        zipcode: "",
         phoneNumber: "",
     });
 
@@ -49,47 +49,69 @@ useEffect(() => {
                     <Row className="mb-3" >
                     <Form.Group as ={Col} controlId="firstName">
                         <Form.Label>First Name:</Form.Label>
-                        <Form.Control type="first name" placeholder="First Name" />
+                        <Form.Control type="first name" placeholder="First Name" 
+                            onChange={(e) => setRegData({...regData, firstName: e.target.value})} 
+                            value={regData.firstName} />
                     </Form.Group>
                     <Form.Group as ={Col} controlId="lastName">
                         <Form.Label>Last Name:</Form.Label>
-                        <Form.Control type="last name" placeholder="Last Name" />
+                        <Form.Control type="last name" placeholder="Last Name"
+                            onChange={(e) => setRegData({...regData, lastName: e.target.value})} 
+                            value={regData.lastName} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email:</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" placeholder="Enter email" 
+                            onChange={(e) => setRegData({...regData, userEmail: e.target.value})} 
+                            value={regData.userEmail} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formMMEANumber">
                         <Form.Label>MMEA Number:</Form.Label>
-                        <Form.Control type="mmea number" placeholder="Enter number" />
+                        <Form.Control type="mmea number" placeholder="Enter number"  
+                        onChange={(e) => setRegData({...regData, MMEANumber: e.target.value})} 
+                        value={regData.MMEANumber}/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formSchool">
                         <Form.Label>School:</Form.Label>
-                        <Form.Control type="school" placeholder="Enter school" />
+                        <Form.Control type="school" placeholder="Enter school" 
+                            onChange={(e) => setRegData({...regData, school: e.target.value})} 
+                            value={regData.school} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formAddress1">
                         <Form.Label>Address Line 1:</Form.Label>
-                        <Form.Control type="address 1" placeholder="Enter street number and name" />
+                        <Form.Control type="address 1" placeholder="Enter street number and name" 
+                            onChange={(e) => setRegData({...regData, address1: e.target.value})} 
+                            value={regData.address1} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formAddress2">
                         <Form.Label>Address Line 2:</Form.Label>
-                        <Form.Control type="address 2" placeholder="" />
+                        <Form.Control type="address 2" placeholder=""
+                            onChange={(e) => setRegData({...regData, address2: e.target.value})} 
+                            value={regData.address2} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formCity">
                         <Form.Label>City:</Form.Label>
-                        <Form.Control type="city" placeholder="Enter city" />
+                        <Form.Control type="city" placeholder="Enter city" 
+                        onChange={(e) => setRegData({...regData, city: e.target.value})} 
+                        value={regData.city} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formState">
                         <Form.Label>State:</Form.Label>
-                        <Form.Control type="state" placeholder="Enter state" />
+                        <Form.Control type="state" placeholder="Enter state" 
+                            onChange={(e) => setRegData({...regData, state: e.target.value})} 
+                            value={regData.state} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formZipcode">
                         <Form.Label>Zip Code:</Form.Label>
-                        <Form.Control type="zipcode" placeholder="Enter zip code" />
+                        <Form.Control type="zipcode" placeholder="Enter zip code" 
+                            onChange={(e) => setRegData({...regData, zipcode: e.target.value})} 
+                            value={regData.zipcode} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
                         <Form.Label>Phone number:</Form.Label>
-                        <Form.Control type="phone number" placeholder="Phone number" />
+                        <Form.Control type="phone number" placeholder="Phone number" 
+                        onChange={(e) => setRegData({...regData, phoneNumber: e.target.value})} 
+                        value={regData.phoneNumber} />
                     </Form.Group>
                     <Button variant="primary" type="submit" style={{backgroundColor: "rgb(253,182,20)"}}>
                         SUBMIT CHANGES
