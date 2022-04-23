@@ -27,7 +27,7 @@ function MyProfileForm() {
   const handleSubmit = e => {
     //Stops page from refreshing
     e.preventDefault();
-    axios.post(`http://localhost:5001/users/update/id:`, regData)
+    axios.post(`http://localhost:5001/users/update/id:62620cf2293866d93d449d68`, regData)
     .then(res =>console.log(res.data))      
  };
 
@@ -39,10 +39,10 @@ const [posts, setPost] = useState([]);
 //GRAB object ID of Registered User
 //Example go to mongodb.com, sign in with user, go to collections, in user registration grab objectID
 //i.e frank sinatra = objectid 62620cf2293866d93d449d68
-//fill in id url with this (i.e http://localhost:5001/userregistration/id:62620cf2293866d93d449d68)
+//fill in id url (inside of handlesubmit function) with this (i.e http://localhost:5001/userregistration/id:62620cf2293866d93d449d68)
 
 useEffect(() => {
-   axios.get('http://localhost:5001/userregistration/id:').then((response) => {setPost(response.data); console.log(response.data);});
+   axios.get(`http://localhost:5001/userregistration/id:62620cf2293866d93d449d68`).then((response) => {setPost(response.data); console.log(response.data);});
   },
   []);
 
