@@ -10,6 +10,12 @@ function Scoresheet() {
    const [success, setSuccess]= useState(false);
    const [message, setMessage]= useState("Scoresheet Submitted!"); 
 
+   //function that clears the success message after 5 seconds
+   function clearMessage(){
+    setTimeout(() => setMessage(""), 5000);
+    setTimeout(() => setSuccess(false), 5000);
+    setTimeout(() => setMessage("Scoresheet Submitted"), 6000);
+ }
   
    //state variable for submitting data to MongoDB
   const [regData, setRegData] = useState({
@@ -23,11 +29,6 @@ function Scoresheet() {
      score: "",
   });
 
-  //function that clears the success message after 5 seconds
-  function clearMessage(){
-   setTimeout(() => setMessage(""), 5000);
-   
-}
 
 //Uses Axios library to post JSON info from submitScoresheet to MongoDB server. 
   const handleSubmit = e => {
@@ -35,8 +36,7 @@ function Scoresheet() {
      e.preventDefault();
      axios.post(`http://localhost:5001/scoresheets/add`, regData)
      .then(res =>console.log(res.data))
-     e.target.reset();
-     setRegData({...regData, studentId:"", score: "", comment1:"", comment2: "", comment3:"",scale1:"",scale2:"",scale3:""});
+     setRegData({...regData,studentId: "", score: "", comment1:"", comment2: "", comment3:"", scale1:"", scale2:"", scale3:""});
      setSuccess(true);
   };
 
@@ -48,9 +48,9 @@ useEffect(() => {
    []);
 
     return (
+
        <Container>
         <Row style={{paddingLeft: "200px"}}>
-
         <div className= "scoresheet"  style={{width:"1000px"}}> 
            <Form onSubmit={handleSubmit}>
               <h3>Scoresheet</h3>
@@ -61,7 +61,7 @@ useEffect(() => {
                   <Form.Select className='form-select form-select-md mb-3' 
                   value = {regData.studentId}
                   onChange={(e) => setRegData({...regData, studentId: e.target.value})}>
-                     <option>-</option>
+                     <option vale = "">-</option>
                      {posts.map((post)=> <option key={post._id} value = {post._id}>{post.firstName + " " + post.lastName}</option>)}
                   </Form.Select>
               </Form.Label>
@@ -155,7 +155,7 @@ useEffect(() => {
             <Form.Group className="mb-3" controlId='scoresheet.Comment1'>
                 <Form.Label>Comment 1:</Form.Label>
                 <Form.Control 
-                as ="textarea"
+                //as ="textarea"
                 onChange={(e) => setRegData({...regData, comment1: e.target.value})} 
                 value={regData.comment1} 
                 type ="String" 
@@ -165,7 +165,7 @@ useEffect(() => {
              <Form.Group className="mb-3" controlId='scoresheet.Comment2'>
                 <Form.Label>Comment 2:</Form.Label>
                 <Form.Control 
-                as ="textarea"
+                //as ="textarea"
                 value={regData.comment2} 
                 onChange={(e) => setRegData({...regData, comment2: e.target.value})} 
                 type ="String" 
@@ -175,7 +175,7 @@ useEffect(() => {
             <Form.Group className="mb-3" controlId='scoresheet.Comment3'>
                 <Form.Label>Comment 3:</Form.Label>
                 <Form.Control 
-                as ="textarea"
+               // as ="textarea"
                 value={regData.comment3} 
                 onChange={(e) => setRegData({...regData, comment3: e.target.value})} 
                 type ="String" />
@@ -193,11 +193,19 @@ useEffect(() => {
 
             {/*Submit button*/}
             <Button variant="primary" type = "submit">Submit</Button>
-             {/*Submit button*/}
-            <Button variant="secondary" type = "save" style={{marginLeft: '10px'}}>Save</Button>
+
            </Form>
            {success && <p style={{color: "green"}}>{message}{clearMessage()}</p>}
+        <p>{regData.studentId}</p>
+        <p>{regData.scale1}</p>
+        <p>{regData.scale2}</p>
+        <p>{regData.scale3}</p>
+        <p>{regData.comment1}</p>
+        <p>{regData.comment2}</p>
+        <p>{regData.comment3}</p>
+        <p>{regData.score}</p>
         </div>
+
       </Row>
    </Container>
     );

@@ -14,6 +14,7 @@ function StudentReg() {
    function clearMessage(){
       setTimeout(() => setMessage(""), 5000);
       setTimeout(() => setSuccess(false), 5000);
+      setTimeout(() => setMessage("Student Registered!"), 6000);
    }
    //useState for submitting data to database
    const [regData, setRegData] = useState({
@@ -34,7 +35,12 @@ function StudentReg() {
       e.preventDefault();
       axios.post(`http://localhost:5001/studentregistration/add`, regData)
       .then(res =>console.log(res.data))
-      e.target.reset(setRegData(""));
+      setRegData({...regData, 
+         firstName: "", lastName: "", 
+         grade: "", instrument1:"",
+         instrument2:"", school:"",
+         ensemble1:"", ensemble2:"", 
+         preference:""})
       setSuccess(true);
    }
 
@@ -46,6 +52,7 @@ function StudentReg() {
    []);
 
    return (
+
       <Container>
         <Row style={{paddingLeft: "200px"}}>
          <div style={{width:"500px"}}>
@@ -177,8 +184,8 @@ function StudentReg() {
              <Form.Group className="mb-3" controlId="Grade">
                <Form.Label>Preference (Optional)</Form.Label>
                <Form.Select
-               // value={regData.preference}
-               // onChange={(e) => setRegData({...regData, preference: e.target.value})} 
+               value={regData.preference}
+               onChange={(e) => setRegData({...regData, preference: e.target.value})} 
                aria-label='"Default select example'>
                    <option value ="">-</option>
                    <option value ="Concert Band">Concert Band</option>
