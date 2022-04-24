@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import MMEAlogo from './MMEA_Logo_Gold.svg';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { toHaveErrorMessage } from '@testing-library/jest-dom/dist/matchers';
 
 function Register() {
 
@@ -17,25 +18,58 @@ function Register() {
     navigate(path);
   }
 
-        //Function that creates JSON body to submit to MONGODB server  
-        const [regData, setRegData] = useState({
-            firstName: "",
-            lastName: "",
-            userEmail: "",
-            userPassword: "",
-            passwordConfirmation: "",
-        });
-    
-        //Uses Axios library to post JSON info from submitScoresheet to MongoDB server. 
-      const handleSubmit = e => {
-        //Stops page from refreshing
-        e.preventDefault();
-        axios.post(`http://localhost:5001/register/add`, regData)
-        .then(res =>console.log(res.data))      
-     };
+  //Password REGEX that requires 1 character 1 upper case character 1 symbol and 1 number that is 8-30 char in length
+  const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,30}$/;
+
+    //Function that creates JSON body to submit to MONGODB server  
+    const [regData, setRegData] = useState({
+        firstName: "",
+        lastName: "",
+        userEmail: "",
+        userPassword: "",
+        passwordConfirmation: "",
+        
+    });
+
+    //password validation states
+    const[validPwd, setValidPwd] = useState(false);
+    const[pwdFocus, setPwdFocus] = useState(false);
+
+    //Match password validation states
+    const [matchPwd, setMatchPwd] = useState('');
+    const [validMatch, setValidMatch] = useState(false);
+    const [matchFocus, setMatchFocus] = useState(false);
+
+    const [errMsg, setErrMsg] = useState('');
+    const [validMsg, setValidMsg] =useState('');
+
+    //Uses Axios library to post JSON info from submitScoresheet to MongoDB server. 
+    const handleSubmit = e => {
+    //Stops page from refreshing
+    e.preventDefault();
+    axios.post(`http://localhost:5001/register/add`, regData)
+    .then(res =>console.log(res.data))      
+    };
+
+    //Use Effect checks for password validation
+    useEffect(() =>{
+        const result = PWD_REGEX.test(regData.userPassword);
+        setValidPwd(result)
+        const match = regData.userPassword === regData.passwordConfirmation;
+        setValidMatch(match);
+    }, [regData.userPassword,regData.passwordConfirmation,PWD_REGEX])
+
+    //Use Effect sets error message if need be
+    useEffect(() =>{
+        setErrMsg('');
+
+    }, [regData.userPassword, regData.passwordConfirmation])
 
     return (
         <Container>
+            {/* <section>
+                <p ref={errRef} className={errMsg ? "errmsg" :"offscreen"}>{errMsg}</p>
+            </section> */}
             <Row>
                 <div style={{width:"100px"}} className="logoCard">
                     <img className='MMEAlogo' src={MMEAlogo} alt = "MMEAlogo" width="375" height="375"></img> 
@@ -76,15 +110,24 @@ function Register() {
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" 
+                        <Form.Control 
+                            type="password" 
+                            placeholder="Password" 
                             onChange={(e) => setRegData({...regData, userPassword: e.target.value})} 
+                            required
+                            onFocus={()=> setPwdFocus(true)}
+                            onBlur={()=> setPwdFocus(false)}
                             value={regData.userPassword} />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formConfirmPassword">
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control type="password" placeholder="Confirm Password" 
+                        <Form.Control 
+                            type="password" 
+                            placeholder="Confirm Password" 
                             onChange={(e) => setRegData({...regData, passwordConfirmation: e.target.value})} 
+                            onFocus={()=> setMatchFocus(true)}
+                            onBlur={()=> setMatchFocus(false)}
                             value={regData.passwordConfirmation} />
                     </Form.Group>
 
