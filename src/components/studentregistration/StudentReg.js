@@ -6,19 +6,15 @@ import axios from 'axios';
 
 //Fix submission error: A component is changing from controlled input to be uncontrolled
 
-//Function that creates JSON body to submit to MONGODB server
 function StudentReg() {
-   const [success, setSuccess]= useState(false);   
-   
-   function msg(boolean){
-      if(boolean === true){
-         console.log("function hit");
-         return(
-         <p style={{color: "green"}}>Student Registered!</p>)
-      }
-   }
+   const [success, setSuccess]= useState(false);
+   const [message, setMessage]= useState("Student Registered!"); 
 
-   
+   //function that clears the success message after 5 seconds
+   function clearMessage(){
+      setTimeout(() => setMessage(""), 5000);
+      setTimeout(() => setSuccess(false), 5000);
+   }
    //useState for submitting data to database
    const [regData, setRegData] = useState({
       firstName: "",
@@ -35,11 +31,11 @@ function StudentReg() {
 //Uses Axios library to post JSON info from StudentReg to MongoDB server. 
    const handleSubmit = e => {
       //Stops page from refreshing
-      setSuccess(true)
       e.preventDefault();
       axios.post(`http://localhost:5001/studentregistration/add`, regData)
       .then(res =>console.log(res.data))
       e.target.reset(setRegData(""));
+      setSuccess(true);
    }
 
    const [regStudents,setRegStudents] = useState([]);
@@ -51,7 +47,6 @@ function StudentReg() {
 
    return (
       <Container>
-         {msg}
         <Row style={{paddingLeft: "200px"}}>
          <div style={{width:"500px"}}>
             <h2>Registered Students</h2>
@@ -196,9 +191,8 @@ function StudentReg() {
 
             {/*Submit button*/}
             <Button variant="primary" type = "submit">Submit</Button>
-            {msg}
-      
            </Form>
+           {success && <h4 style={{color: "green"}}>{message}{clearMessage()}</h4>}
         </div>
       </Row>
    </Container>

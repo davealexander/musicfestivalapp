@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form, Container, Row, Button, FormLabel } from 'react-bootstrap';
+import { Form, Container, Row, Button } from 'react-bootstrap';
 import './scoresheet.css'
 import axios from 'axios';
 
 function Scoresheet() {
-  //Function that creates JSON body to submit to MONGODB server  
+   
+   
+   const [success, setSuccess]= useState(false);
+   const [message, setMessage]= useState("Scoresheet Submitted!"); 
+
+  
+   //state variable for submitting data to MongoDB
   const [regData, setRegData] = useState({
      studentId: "",
      scale1: "",
@@ -17,12 +23,21 @@ function Scoresheet() {
      score: "",
   });
 
+  //function that clears the success message after 5 seconds
+  function clearMessage(){
+   setTimeout(() => setMessage(""), 5000);
+   
+}
+
 //Uses Axios library to post JSON info from submitScoresheet to MongoDB server. 
   const handleSubmit = e => {
      //Stops page from refreshing
      e.preventDefault();
      axios.post(`http://localhost:5001/scoresheets/add`, regData)
-     .then(res =>console.log(res.data))      
+     .then(res =>console.log(res.data))
+     e.target.reset();
+     setRegData({...regData, studentId:"", score: "", comment1:"", comment2: "", comment3:"",scale1:"",scale2:"",scale3:""});
+     setSuccess(true);
   };
 
 const [posts, setPost] = useState([]);
@@ -180,9 +195,8 @@ useEffect(() => {
             <Button variant="primary" type = "submit">Submit</Button>
              {/*Submit button*/}
             <Button variant="secondary" type = "save" style={{marginLeft: '10px'}}>Save</Button>
-         
-
            </Form>
+           {success && <p style={{color: "green"}}>{message}{clearMessage()}</p>}
         </div>
       </Row>
    </Container>
