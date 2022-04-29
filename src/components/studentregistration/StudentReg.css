@@ -1,7 +1,12 @@
 .studentregistration{
+    margin-top: 50px;
+    position: relavtive
+    
 }
 
 .studentList{
-    background-color: lightgray;
-    outline-color: lightgray;
+    position:relative;
+    height: 600px;
+    overflow: scroll;
+    padding-right: 20px;
 }

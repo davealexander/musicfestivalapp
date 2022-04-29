@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Form, Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
 import './StudentReg.css'
 import axios from 'axios';
+import { color } from '@mui/system';
 
 //Fix submission error: A component is changing from controlled input to be uncontrolled
 
@@ -55,11 +56,11 @@ function StudentReg() {
 
       <Container>
         <Row style={{paddingLeft: "200px"}}>
-         <div style={{width:"500px"}}>
-            <h2>Registered Students</h2>
+         <div style={{width:"500px", marginTop:"50px"}}>
+            <h2 style={{marginBottom: "20px"}}>Registered Students</h2>
             <ListGroup className = "studentList">
                {regStudents.map((student) => 
-               <ListGroup.Item key={student._id} value={student._id}>
+               <ListGroup.Item style={{backgroundColor: "lightgray"}} key={student._id} value={student._id}>
                   {student.firstName + " " + student.lastName + " - " + student.grade + " - " + student.school}
                   </ListGroup.Item>)}
             </ListGroup>
@@ -67,7 +68,7 @@ function StudentReg() {
 
          <div className= "studentregistration"  style={{width:"500px"}}> 
            <Form onSubmit={handleSubmit}>
-            <h3>Student Registration</h3>
+            <h2 style={{marginBottom: "20px"}}>Student Registration</h2>
                
                <Row className="mb-3">
                   

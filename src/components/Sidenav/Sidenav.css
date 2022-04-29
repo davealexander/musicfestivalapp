@@ -41,4 +41,6 @@
 }
 .navText a:hover{
     background-color: goldenrod;
+    color: navy;
+  
 }

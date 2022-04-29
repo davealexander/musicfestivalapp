@@ -7,8 +7,8 @@ import './Sidenav.css'
 
 function Sidenav() {
     return (
-        <div className="sideNav"> 
-        <Container className='sideNavContainer'>
+      <Container className='sideNavContainer'>
+       <div className="sideNav"> 
           <Navbar className='navColor' variant="dark">    
           <ul>
               <h2>Maine Music Educator Association</h2>
@@ -19,8 +19,8 @@ function Sidenav() {
 
           </ul>
         </Navbar>
-        </Container>
         </div>
+        </Container>
     );
   }
 

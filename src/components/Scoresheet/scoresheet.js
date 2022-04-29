@@ -196,14 +196,7 @@ useEffect(() => {
 
            </Form>
            {success && <p style={{color: "green"}}>{message}{clearMessage()}</p>}
-        <p>{regData.studentId}</p>
-        <p>{regData.scale1}</p>
-        <p>{regData.scale2}</p>
-        <p>{regData.scale3}</p>
-        <p>{regData.comment1}</p>
-        <p>{regData.comment2}</p>
-        <p>{regData.comment3}</p>
-        <p>{regData.score}</p>
+    
         </div>
 
       </Row>

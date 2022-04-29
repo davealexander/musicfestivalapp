@@ -10,11 +10,9 @@
 }
 
 .loginPic{
-    margin-left: 10px;
+    margin-left: 50px;
     border-radius: 10px;
+    color: white;
     
 }
 
-.loginPic:hover{
-    background-color: goldenrod;
-}
