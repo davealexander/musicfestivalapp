@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Form, Container, Row, Button } from 'react-bootstrap';
+import  Radio  from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup'
+import FormLabel from '@mui/material/FormLabel'
 import './scoresheet.css'
 import axios from 'axios';
+import { FormControl } from '@material-ui/core';
+import { FormControlLabel } from '@mui/material';
 
 function Scoresheet() {
    
@@ -67,90 +72,91 @@ useEffect(() => {
               </Form.Label>
             </Form.Group>
 
-            {/*Scale 1  REFACTOR for */}
-            <Form.Group className="mb-3" controlId="scale1">
-               <Form.Label>Scale 1:</Form.Label>
-               <div 
-               value={regData.scale1}
-               onChange={(e) => setRegData({...regData, scale1: e.target.value})}>
-               <Form.Check value="1" inline label="1" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="1.5"inline label="" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="2"inline label="2" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="2.5"inline label="" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="3"inline label="3" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="3.5"inline label="" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="4"inline label="4" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="4.5"inline label="" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="5"inline label="5" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="5.5"inline label="" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="6"inline label="6" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="6.5"inline label="" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="7"inline label="7" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="7.5"inline label="" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="8"inline label="8" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="8.5"inline label="" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="9"inline label="9" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="9.5"inline label="" name='group1' type='radio' id='inline-radio-1'/>
-               <Form.Check value="10"inline label="10" name='group1' type='radio' id='inline-radio-1'/>
-               </div>
-            </Form.Group>
+            <FormControl id="margin-none">
+               <FormLabel value={regData.scale1}
+                  onChange={(e) => setRegData({...regData, scale1: e.target.value})}>
+                  <p>Scale 1</p>
+                  <RadioGroup row id="margin-none">
+                     <FormControlLabel margin ="none" id="margin-none" value="1" control={<Radio/> } label= "1" labelPlacement='bottom'/>
+                     <FormControlLabel margin ="none" id="margin-none" value="1.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="2" control={<Radio/> } label= "2" labelPlacement='bottom'/>
+                     <FormControlLabel value="2.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="3" control={<Radio/> } label= "3" labelPlacement='bottom'/>
+                     <FormControlLabel value="3.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="4" control={<Radio/> } label= "4" labelPlacement='bottom'/>
+                     <FormControlLabel value="4.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="5" control={<Radio/> } label= "5" labelPlacement='bottom'/>
+                     <FormControlLabel value="5.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="6" control={<Radio/> } label= "6" labelPlacement='bottom'/>
+                     <FormControlLabel value="6.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="7" control={<Radio/> } label= "7" labelPlacement='bottom'/>
+                     <FormControlLabel value="7.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="8" control={<Radio/> } label= "8" labelPlacement='bottom'/>
+                     <FormControlLabel value="8.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="9" control={<Radio/> } label= "9" labelPlacement='bottom'/>
+                     <FormControlLabel value="9.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="10" control={<Radio/> } label= "10" labelPlacement='bottom'/>
+                  </RadioGroup>
+               </FormLabel>
+            </FormControl>
 
-              {/*Scale 2  REFACTOR for */}
-            <Form.Group className="mb-3" controlId="scale2">
-               <Form.Label>Scale 2:</Form.Label>
-               <div 
-               value={regData.scale2}
-               onChange={(e) => setRegData({...regData, scale2: e.target.value})}>
-               <Form.Check value="1" inline label="1" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="1.5"inline label="" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="2"inline label="2" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="2.5"inline label="" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="3"inline label="3" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="3.5"inline label="" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="4"inline label="4" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="4.5"inline label="" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="5"inline label="5" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="5.5"inline label="" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="6"inline label="6" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="6.5"inline label="" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="7"inline label="7" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="7.5"inline label="" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="8"inline label="8" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="8.5"inline label="" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="9"inline label="9" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="9.5"inline label="" name='group2' type='radio' id='inline-radio-1'/>
-               <Form.Check value="10"inline label="10" name='group2' type='radio' id='inline-radio-1'/>
-              </div>
-            </Form.Group>
+            <FormControl>
+               <FormLabel value={regData.scale2}
+                  onChange={(e) => setRegData({...regData, scale2: e.target.value})}>
+                  <p>Scale 2</p>
+                  <RadioGroup row>
+                     <FormControlLabel value="1" control={<Radio/>} label= "1" labelPlacement='bottom'/>
+                     <FormControlLabel value="1.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="2" control={<Radio/>} label= "2" labelPlacement='bottom'/>
+                     <FormControlLabel value="2.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="3" control={<Radio/>} label= "3" labelPlacement='bottom'/>
+                     <FormControlLabel value="3.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="4" control={<Radio/>} label= "4" labelPlacement='bottom'/>
+                     <FormControlLabel value="4.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="5" control={<Radio/>} label= "5" labelPlacement='bottom'/>
+                     <FormControlLabel value="5.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="6" control={<Radio/>} label= "6" labelPlacement='bottom'/>
+                     <FormControlLabel value="6.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="7" control={<Radio/>} label= "7" labelPlacement='bottom'/>
+                     <FormControlLabel value="7.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="8" control={<Radio/>} label= "8" labelPlacement='bottom'/>
+                     <FormControlLabel value="8.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="9" control={<Radio/>} label= "9" labelPlacement='bottom'/>
+                     <FormControlLabel value="9.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="10" control={<Radio/>} label= "10" labelPlacement='bottom'/>
+                  </RadioGroup>
+               </FormLabel>
+            </FormControl>
 
-             {/*Scale 3  REFACTOR for */}
-            <Form.Group className="mb-3" controlId="scale3">
-               <Form.Label>Scale 3:</Form.Label>
-               <div 
-               value={regData.scale3}
-               onChange={(e) => setRegData({...regData, scale3: e.target.value})}>
-               <Form.Check value="1" inline label="1" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="1.5"inline label="" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="2"inline label="2" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="2.5"inline label="" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="3"inline label="3" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="3.5"inline label="" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="4"inline label="4" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="4.5"inline label="" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="5"inline label="5" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="5.5"inline label="" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="6"inline label="6" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="6.5"inline label="" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="7"inline label="7" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="7.5"inline label="" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="8"inline label="8" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="8.5"inline label="" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="9"inline label="9" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="9.5"inline label="" name='group3' type='radio' id='inline-radio-1'/>
-               <Form.Check value="10"inline label="10" name='group3' type='radio' id='inline-radio-1'/>
-               </div>
-            </Form.Group>
-            
+            <FormControl>
+               <FormLabel value={regData.scale3}
+                  onChange={(e) => setRegData({...regData, scale3: e.target.value})}>
+                  <p>Scale 3</p>
+                  <RadioGroup row>
+                     <FormControlLabel value="1" control={<Radio/>} label= "1" labelPlacement='bottom'/>
+                     <FormControlLabel value="1.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="2" control={<Radio/>} label= "2" labelPlacement='bottom'/>
+                     <FormControlLabel value="2.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="3" control={<Radio/>} label= "3" labelPlacement='bottom'/>
+                     <FormControlLabel value="3.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="4" control={<Radio/>} label= "4" labelPlacement='bottom'/>
+                     <FormControlLabel value="4.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="5" control={<Radio/>} label= "5" labelPlacement='bottom'/>
+                     <FormControlLabel value="5.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="6" control={<Radio/>} label= "6" labelPlacement='bottom'/>
+                     <FormControlLabel value="6.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="7" control={<Radio/>} label= "7" labelPlacement='bottom'/>
+                     <FormControlLabel value="7.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="8" control={<Radio/>} label= "8" labelPlacement='bottom'/>
+                     <FormControlLabel value="8.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="9" control={<Radio/>} label= "9" labelPlacement='bottom'/>
+                     <FormControlLabel value="9.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     <FormControlLabel value="10" control={<Radio/>} label= "10" labelPlacement='bottom'/>
+                  </RadioGroup>
+               </FormLabel>
+            </FormControl>
+          
+           
             {/* Comment #1 */}
             <Form.Group className="mb-3" controlId='scoresheet.Comment1'>
                 <Form.Label>Comment 1:</Form.Label>
@@ -161,6 +167,7 @@ useEffect(() => {
                 type ="String" 
                 />
             </Form.Group>
+
              {/* Comment #2 */}
              <Form.Group className="mb-3" controlId='scoresheet.Comment2'>
                 <Form.Label>Comment 2:</Form.Label>
@@ -171,7 +178,8 @@ useEffect(() => {
                 type ="String" 
                 />
             </Form.Group>
-            {/* Comment #2 */}
+
+            {/* Comment #3 */}
             <Form.Group className="mb-3" controlId='scoresheet.Comment3'>
                 <Form.Label>Comment 3:</Form.Label>
                 <Form.Control 

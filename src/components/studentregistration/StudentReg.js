@@ -1,9 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form, Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
+import { Form, Container, Row, Col, ListGroup } from 'react-bootstrap';
 import './StudentReg.css'
 import axios from 'axios';
-import { color } from '@mui/system';
+
+//Material UI Themes
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
+
+
 
 //Fix submission error: A component is changing from controlled input to be uncontrolled
 
@@ -74,131 +84,139 @@ function StudentReg() {
                   
                   {/*First Name*/}
                   <Form.Group as ={Col} controlId="firstName">
-                     <Form.Label>First Name</Form.Label>
-                     <Form.Control
+                     <Box
                         onChange={(e) => setRegData({...regData, firstName: e.target.value})} 
                         value={regData.firstName}
-                        type ="String" 
-                        placeholder='First Name'>
-                     </Form.Control>
+                        type ="String">
+                           <TextField required label="First Name" variant='outlined' className='textfield'/>
+                     </Box>
                   </Form.Group>
 
                   {/*Last Name*/}
                   <Form.Group as={Col} controlId="lastName">
-                     <Form.Label> Last Name</Form.Label>
-                     <Form.Control 
+                     <Box 
                         onChange={(e) => setRegData({...regData, lastName: e.target.value})} 
                         value={regData.lastName} 
-                        type ="String" 
-                        placeholder='Last Name'
-                        />
+                        type ="String">
+                           <TextField required label="Last Name" variant='outlined' className='textfield'/>
+                     </Box>
                   </Form.Group>
                
                </Row>
 
-               {/*Grade*/}
-               <Form.Group className="mb-3" controlId="Grade">
-                  <Form.Label>Grade</Form.Label>
-                  <Form.Select
-                  value={regData.grade}
-                  onChange={(e) => setRegData({...regData, grade: e.target.value})}
-                  aria-label='"Default select example'>
-                     <option value ="">-</option>
-                     <option value ="6">6</option>
-                     <option value ="7">7</option>
-                     <option value ="8">8</option>
-                     <option value ="9">9</option>
-                     <option value ="10">10</option>
-                     <option value ="11">11</option>
-                     <option value ="12">12</option>
-                  </Form.Select>
+
+               <Row className="mb-3">
+               {/*Instrument*/}
+               <Form.Group as ={Col}>
+                  <Box 
+                     onChange={(e) => setRegData({...regData, instrument1: e.target.value})} 
+                     value={regData.instrument1}  
+                     type ="String"> 
+                        <TextField required label="Instrument" variant='outlined' className='textfield'/>
+                     </Box>
                </Form.Group>
 
-            <Row className="mb-3">
-            {/*Instrument*/}
-            <Form.Group as ={Col} controlId="lastName">
-               <Form.Label> Instrument</Form.Label>
-               <Form.Control 
-                  onChange={(e) => setRegData({...regData, instrument1: e.target.value})} 
-                  value={regData.instrument1}  
-                  type ="String" 
-                  placeholder=' i.e instrument'
-                  />
-            </Form.Group>
+               {/*Instrument2*/}
+               <Form.Group as ={Col}>
+                  <Box
+                  onChange={(e) => setRegData({...regData, instrument2: e.target.value})} 
+                  value={regData.instrument2}  
+                  type ="String">
+                     <TextField label="Secondary Instrument" variant='outlined' className='textfield'/>
+                  </Box>
+               </Form.Group>
+               </Row>
 
-            {/*Instrument*/}
-            <Form.Group as ={Col} controlId="lastName">
-               <Form.Label>Secondary Instrument</Form.Label>
-               <Form.Control
-               onChange={(e) => setRegData({...regData, instrument2: e.target.value})} 
-               value={regData.instrument2}  
-               type ="String" 
-               placeholder='optional'
-               />
-            </Form.Group>
+               <Row>
+
+               {/*School*/}
+               <FormControl style={{marginBottom: "20px"}}>
+                  <Box
+                     onChange={(e) => setRegData({...regData, school: e.target.value})} 
+                     value={regData.school}   
+                     type ="String"
+                     >
+                        <TextField required label="School" variant='outlined' style={{width:"500px"}}/>
+                  </Box>
+               </FormControl>
+               </Row>
+            
+            <Row>
+               {/*Grade*/}
+               <FormControl style={{marginBottom: "20px"}} >
+                     <InputLabel required>Grade</InputLabel>
+                     <Select
+                     required
+                     value={regData.grade}
+                     onChange={(e) => setRegData({...regData, grade: e.target.value})}
+                     >
+                        <MenuItem required value ={""}>-</MenuItem>
+                        <MenuItem value ={6}>6</MenuItem>
+                        <MenuItem value ={7}>7</MenuItem>
+                        <MenuItem value ={8}>8</MenuItem>
+                        <MenuItem value ={9}>9</MenuItem>
+                        <MenuItem value ={1}>10</MenuItem>
+                        <MenuItem value ={1}>11</MenuItem>
+                        <MenuItem value ={1}>12</MenuItem>
+                     </Select>
+                  </FormControl>
+               
+               {/*Ensembles 1*/}
+               <FormControl style={{marginBottom: "20px"}}>
+                  <InputLabel required>Ensemble 1</InputLabel>
+                  <Select
+                  required
+                  value={regData.ensemble1}
+                  onChange={(e) => setRegData({...regData, ensemble1: e.target.value})}
+                  aria-label='"Default slect example'>
+                     <MenuItem value ="">-</MenuItem>
+                     <MenuItem value ="Concert Band">Concert Band</MenuItem>
+                     <MenuItem value ="Orchestra">Orchestra</MenuItem>
+                     <MenuItem value ="Chorus">Chorus</MenuItem>
+                     <MenuItem value ="Jazz Ensemble">Jazz Ensemble</MenuItem>
+                     <MenuItem value ="Jazz Chorus">Jazz Chorus</MenuItem>
+                  </Select>
+               </FormControl>
+
             </Row>
 
-            {/*School*/}
-            <Form.Group className="mb-3" controlId="lastName">
-               <Form.Label> School</Form.Label>
-               <Form.Control 
-                  onChange={(e) => setRegData({...regData, school: e.target.value})} 
-                  value={regData.school}   
-                  type ="String" 
-                  placeholder=''
-                  />
-            </Form.Group>
-            
-            {/*Ensembles 1*/}
-             <Form.Group className="mb-3" controlId="Grade">
-               <Form.Label>Ensemble 1</Form.Label>
-               <Form.Select
-               value={regData.ensemble1}
-               onChange={(e) => setRegData({...regData, ensemble1: e.target.value})}
-               aria-label='"Default slect example'>
-                   <option value ="">-</option>
-                   <option value ="Concert Band">Concert Band</option>
-                   <option value ="Orchestra">Orchestra</option>
-                   <option value ="Chorus">Chorus</option>
-                   <option value ="Jazz Ensemble">Jazz Ensemble</option>
-                   <option value ="Jazz Chorus">Jazz Chorus</option>
-               </Form.Select>
-            </Form.Group>
+            <Row>
+               {/*Ensembles 2*/}
+               <FormControl style={{marginBottom: "20px"}}>
+                  <InputLabel >Ensemble 2 (Optional)</InputLabel>
+                  <Select 
+                  value={regData.ensemble2}
+                  onChange={(e) => setRegData({...regData, ensemble2: e.target.value})}
+                  aria-label='"Default select example'>
+                     <MenuItem value ="">-</MenuItem>
+                     <MenuItem value ="Concert Band">Concert Band</MenuItem>
+                     <MenuItem value ="Orchestra">Orchestra</MenuItem>
+                     <MenuItem value ="Chorus">Chorus</MenuItem>
+                     <MenuItem value ="Jazz Ensemble">Jazz Ensemble</MenuItem>
+                     <MenuItem value ="Jazz Chorus">Jazz Chorus</MenuItem> 
+                     </Select>
+               </FormControl>
 
-            {/*Ensembles 2*/}
-            <Form.Group className="mb-3" controlId="Grade">
-               <Form.Label>Ensemble 2 (Optional)</Form.Label>
-               <Form.Select 
-               value={regData.ensemble2}
-               onChange={(e) => setRegData({...regData, ensemble2: e.target.value})}
-               aria-label='"Default select example'>
-                   <option value ="">-</option>
-                   <option value ="Concert Band">Concert Band</option>
-                   <option value ="Orchestra">Orchestra</option>
-                   <option value ="Chorus">Chorus</option>
-                   <option value ="Jazz Ensemble">Jazz Ensemble</option>
-                   <option value ="Jazz Chorus">Jazz Chorus</option> 
-                   </Form.Select>
-            </Form.Group>
+               {/*Ensemble Preference*/}
+               <FormControl style={{marginBottom: "20px"}}>
+                  <InputLabel>Preference (Optional)</InputLabel>
+                  <Select
+                  value={regData.preference}
+                  onChange={(e) => setRegData({...regData, preference: e.target.value})} 
+                  aria-label='"Default select example'>
+                     <MenuItem value ="">-</MenuItem>
+                     <MenuItem value ="Concert Band">Concert Band</MenuItem>
+                     <MenuItem value ="Orchestra">Orchestra</MenuItem>
+                     <MenuItem value ="Chorus">Chorus</MenuItem>
+                     <MenuItem value ="Jazz Ensemble">Jazz Ensemble</MenuItem>
+                     <MenuItem value ="Jazz Chorus">Jazz Chorus</MenuItem>
+                  </Select>
+               </FormControl>
 
-             {/*Ensemble Preference*/}
-             <Form.Group className="mb-3" controlId="Grade">
-               <Form.Label>Preference (Optional)</Form.Label>
-               <Form.Select
-               value={regData.preference}
-               onChange={(e) => setRegData({...regData, preference: e.target.value})} 
-               aria-label='"Default select example'>
-                   <option value ="">-</option>
-                   <option value ="Concert Band">Concert Band</option>
-                   <option value ="Orchestra">Orchestra</option>
-                   <option value ="Chorus">Chorus</option>
-                   <option value ="Jazz Ensemble">Jazz Ensemble</option>
-                   <option value ="Jazz Chorus">Jazz Chorus</option>
-               </Form.Select>
-            </Form.Group>
+               </Row>
 
             {/*Submit button*/}
-            <Button variant="primary" type = "submit">Submit</Button>
+            <Button variant="contained" type = "submit">Submit</Button>
            </Form>
            {success && <h4 style={{color: "green"}}>{message}{clearMessage()}</h4>}
         </div>

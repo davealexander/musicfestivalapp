@@ -1,3 +1,6 @@
+.invisible{
+    color:transparent;
+}
 .sideNavContainer{
     justify-content: left;
     position: left;
@@ -20,6 +23,7 @@
     text-decoration: none;
   }
 .navText{
+    color:white;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -28,6 +32,7 @@
     height: 60px;
     text-decoration: none;
 }
+
 .navText a {
     text-decoration: none;
     color: white;
