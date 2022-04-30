@@ -6,8 +6,12 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormLabel from '@mui/material/FormLabel'
 import './scoresheet.css'
 import axios from 'axios';
-import { FormControl } from '@material-ui/core';
-import { FormControlLabel } from '@mui/material';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import { FormControl, TextField } from '@material-ui/core';
+import { FormControlLabel, Input } from '@mui/material';
+import Box from '@mui/material/Box';
+import Select from '@mui/material/Select';
 
 function Scoresheet() {
    
@@ -61,96 +65,105 @@ useEffect(() => {
               <h3>Scoresheet</h3>
               <h4>District 2 - Band</h4>
 
-            <Form.Group className="mb-3" controlId='Student'>
-               <Form.Label>
-                  <Form.Select className='form-select form-select-md mb-3' 
+            {/*Student Selection */}
+            <Row className='studentBox'>
+            <FormControl className="mb-3">
+               <InputLabel required>Student</InputLabel>
+                  <Select
+                  required
+                  label = 'Student'
+                  size = 'small'
                   value = {regData.studentId}
                   onChange={(e) => setRegData({...regData, studentId: e.target.value})}>
-                     <option vale = "">-</option>
-                     {posts.map((post)=> <option key={post._id} value = {post._id}>{post.firstName + " " + post.lastName}</option>)}
-                  </Form.Select>
-              </Form.Label>
-            </Form.Group>
+                     <MenuItem value = "">-</MenuItem>
+                     {posts.map((post)=> <MenuItem key={post._id} value = {post._id}>{post.firstName + " " + post.lastName}</MenuItem>)}
+                  </Select>
+            </FormControl>
+            </Row>
 
-            <FormControl id="margin-none">
-               <FormLabel value={regData.scale1}
+            {/*Scale 1 */}
+            <FormControl className='mb-3'>
+               <InputLabel required>Scale 1</InputLabel>
+               <FormLabel 
+                  value={regData.scale1}
                   onChange={(e) => setRegData({...regData, scale1: e.target.value})}>
-                  <p>Scale 1</p>
-                  <RadioGroup row id="margin-none">
-                     <FormControlLabel margin ="none" id="margin-none" value="1" control={<Radio/> } label= "1" labelPlacement='bottom'/>
-                     <FormControlLabel margin ="none" id="margin-none" value="1.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                  
+                  <RadioGroup row  required id="margin-none">
+                     <FormControlLabel value="1" control={<Radio/> } label= "1" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="1.5" control={<Radio/> } label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="2" control={<Radio/> } label= "2" labelPlacement='bottom'/>
-                     <FormControlLabel value="2.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="2.5" control={<Radio/> } label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="3" control={<Radio/> } label= "3" labelPlacement='bottom'/>
-                     <FormControlLabel value="3.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="3.5" control={<Radio/> } label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="4" control={<Radio/> } label= "4" labelPlacement='bottom'/>
-                     <FormControlLabel value="4.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="4.5" control={<Radio/> } label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="5" control={<Radio/> } label= "5" labelPlacement='bottom'/>
-                     <FormControlLabel value="5.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="5.5" control={<Radio/> } label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="6" control={<Radio/> } label= "6" labelPlacement='bottom'/>
-                     <FormControlLabel value="6.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="6.5" control={<Radio/> } label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="7" control={<Radio/> } label= "7" labelPlacement='bottom'/>
-                     <FormControlLabel value="7.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="7.5" control={<Radio/> } label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="8" control={<Radio/> } label= "8" labelPlacement='bottom'/>
-                     <FormControlLabel value="8.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="8.5" control={<Radio/> } label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="9" control={<Radio/> } label= "9" labelPlacement='bottom'/>
-                     <FormControlLabel value="9.5" control={<Radio/> } label= "" labelPlacement='bottom'/>
                      <FormControlLabel value="10" control={<Radio/> } label= "10" labelPlacement='bottom'/>
                   </RadioGroup>
                </FormLabel>
             </FormControl>
 
-            <FormControl>
+            {/*Scale 2 */}
+            <FormControl className='mb-3'>
+               <InputLabel required>Scale 2</InputLabel>
                <FormLabel value={regData.scale2}
                   onChange={(e) => setRegData({...regData, scale2: e.target.value})}>
-                  <p>Scale 2</p>
-                  <RadioGroup row>
+                  <RadioGroup required row>
                      <FormControlLabel value="1" control={<Radio/>} label= "1" labelPlacement='bottom'/>
-                     <FormControlLabel value="1.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="1.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="2" control={<Radio/>} label= "2" labelPlacement='bottom'/>
-                     <FormControlLabel value="2.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="2.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="3" control={<Radio/>} label= "3" labelPlacement='bottom'/>
-                     <FormControlLabel value="3.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="3.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="4" control={<Radio/>} label= "4" labelPlacement='bottom'/>
-                     <FormControlLabel value="4.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="4.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="5" control={<Radio/>} label= "5" labelPlacement='bottom'/>
-                     <FormControlLabel value="5.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="5.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="6" control={<Radio/>} label= "6" labelPlacement='bottom'/>
-                     <FormControlLabel value="6.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="6.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="7" control={<Radio/>} label= "7" labelPlacement='bottom'/>
-                     <FormControlLabel value="7.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="7.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="8" control={<Radio/>} label= "8" labelPlacement='bottom'/>
-                     <FormControlLabel value="8.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="8.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="9" control={<Radio/>} label= "9" labelPlacement='bottom'/>
-                     <FormControlLabel value="9.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="9.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="10" control={<Radio/>} label= "10" labelPlacement='bottom'/>
                   </RadioGroup>
                </FormLabel>
             </FormControl>
 
-            <FormControl>
+            {/*Scale 3 */}
+            <FormControl className='mb-3'>
+            <InputLabel required>Scale 3</InputLabel>
                <FormLabel value={regData.scale3}
                   onChange={(e) => setRegData({...regData, scale3: e.target.value})}>
-                  <p>Scale 3</p>
-                  <RadioGroup row>
+                  <RadioGroup  required row>
                      <FormControlLabel value="1" control={<Radio/>} label= "1" labelPlacement='bottom'/>
-                     <FormControlLabel value="1.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="1.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="2" control={<Radio/>} label= "2" labelPlacement='bottom'/>
-                     <FormControlLabel value="2.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="2.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="3" control={<Radio/>} label= "3" labelPlacement='bottom'/>
-                     <FormControlLabel value="3.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="3.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="4" control={<Radio/>} label= "4" labelPlacement='bottom'/>
-                     <FormControlLabel value="4.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="4.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="5" control={<Radio/>} label= "5" labelPlacement='bottom'/>
-                     <FormControlLabel value="5.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="5.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="6" control={<Radio/>} label= "6" labelPlacement='bottom'/>
-                     <FormControlLabel value="6.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="6.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="7" control={<Radio/>} label= "7" labelPlacement='bottom'/>
-                     <FormControlLabel value="7.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="7.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="8" control={<Radio/>} label= "8" labelPlacement='bottom'/>
-                     <FormControlLabel value="8.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="8.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="9" control={<Radio/>} label= "9" labelPlacement='bottom'/>
-                     <FormControlLabel value="9.5" control={<Radio/>} label= "" labelPlacement='bottom'/>
+                     {/* <FormControlLabel value="9.5" control={<Radio/>} label= "" labelPlacement='bottom'/> */}
                      <FormControlLabel value="10" control={<Radio/>} label= "10" labelPlacement='bottom'/>
                   </RadioGroup>
                </FormLabel>
@@ -158,49 +171,58 @@ useEffect(() => {
           
            
             {/* Comment #1 */}
-            <Form.Group className="mb-3" controlId='scoresheet.Comment1'>
-                <Form.Label>Comment 1:</Form.Label>
-                <Form.Control 
-                //as ="textarea"
+            <Row className='commentBox'>
+            <FormControl className='mb-3'>
+                <Box
                 onChange={(e) => setRegData({...regData, comment1: e.target.value})} 
                 value={regData.comment1} 
-                type ="String" 
-                />
-            </Form.Group>
+                type ="String">
+                   <TextField variant='outlined' label="Comment 1" size= 'small' className='commentField'></TextField>
+                </Box>
+            </FormControl>
+            </Row>
 
              {/* Comment #2 */}
-             <Form.Group className="mb-3" controlId='scoresheet.Comment2'>
-                <Form.Label>Comment 2:</Form.Label>
-                <Form.Control 
+             <Row className='commentBox'>
+             <FormControl className="mb-3">
+                <Box 
                 //as ="textarea"
                 value={regData.comment2} 
                 onChange={(e) => setRegData({...regData, comment2: e.target.value})} 
-                type ="String" 
-                />
-            </Form.Group>
+                type ="String">
+                   <TextField variant='outlined' label="Comment 2" size="small" className='commentField'/>
+                </Box>
+            </FormControl>
+            </Row>
 
             {/* Comment #3 */}
-            <Form.Group className="mb-3" controlId='scoresheet.Comment3'>
-                <Form.Label>Comment 3:</Form.Label>
-                <Form.Control 
-               // as ="textarea"
+            <Row className='commentBox'>
+            <FormControl className='mb-3'>
+                <Box 
                 value={regData.comment3} 
                 onChange={(e) => setRegData({...regData, comment3: e.target.value})} 
-                type ="String" />
-            </Form.Group>
+                type ="String">
+                   <TextField variant='outlined' label="Comment 3" size='small' className='commentField'/>
+               </Box>
+            </FormControl>
+            </Row>
 
-            <Form.Group className='mb-3'>
-                <Form.Label>Score</Form.Label>
-                <Form.Control 
+            <Row className='commentBox'>
+            <FormControl>
+               <Box
                 type="float" 
                 placeholder="i.e 87.5"
                 value={regData.score} 
-                onChange={(e) => setRegData({...regData, score: e.target.value})} 
-                />
-            </Form.Group>
+                onChange={(e) => setRegData({...regData, score: e.target.value})}>
+                   <TextField variant='outlined' label="Score" size='small' className='commentField'/>
+               </Box>
+            </FormControl>
+            </Row>
 
+            
             {/*Submit button*/}
-            <Button variant="primary" type = "submit">Submit</Button>
+            <Button variant="primary" type = "submit" className='submitScoresheet'>Submit</Button>
+            
 
            </Form>
            {success && <p style={{color: "green"}}>{message}{clearMessage()}</p>}
