@@ -1,0 +1,15 @@
+.submitScoresheet{
+    margin-top: 20px;
+}
+.studentBox{
+    margin-top:20px;
+    width: 730px;
+}
+.commentBox{
+    margin-top: 30px;
+    margin-left: 2px;
+}
+
+.commentField{
+    width: 730px;
+}

@@ -53,6 +53,7 @@ function StudentReg() {
          ensemble1:"", ensemble2:"", 
          preference:""})
       setSuccess(true);
+      console.log(regData);
    }
 
    const [regStudents,setRegStudents] = useState([]);
@@ -83,60 +84,73 @@ function StudentReg() {
                <Row className="mb-3">
                   
                   {/*First Name*/}
-                  <Form.Group as ={Col} controlId="firstName">
-                     <Box
-                        onChange={(e) => setRegData({...regData, firstName: e.target.value})} 
-                        value={regData.firstName}
-                        type ="String">
-                           <TextField required label="First Name" variant='outlined' className='textfield'/>
+                  <FormControl as = {Col}>    
+                     <Box>
+                           <TextField  
+                           value={regData.firstName}
+                           onChange={(e) => setRegData({...regData, firstName: e.target.value})}
+                           required label="First Name" 
+                           variant='outlined' 
+                           className='textfield'/>
                      </Box>
-                  </Form.Group>
+                  </FormControl>
 
                   {/*Last Name*/}
-                  <Form.Group as={Col} controlId="lastName">
-                     <Box 
-                        onChange={(e) => setRegData({...regData, lastName: e.target.value})} 
-                        value={regData.lastName} 
-                        type ="String">
-                           <TextField required label="Last Name" variant='outlined' className='textfield'/>
+                  <FormControl as={Col}>
+                     <Box>
+                           <TextField
+                           value={regData.lastName} 
+                           onChange={(e) => setRegData({...regData, lastName: e.target.value})} 
+                           required 
+                           label="Last Name"
+                           variant='outlined' 
+                           className='textfield'/>
                      </Box>
-                  </Form.Group>
+                  </FormControl>
                
                </Row>
 
 
                <Row className="mb-3">
                {/*Instrument*/}
-               <Form.Group as ={Col}>
-                  <Box 
-                     onChange={(e) => setRegData({...regData, instrument1: e.target.value})} 
-                     value={regData.instrument1}  
-                     type ="String"> 
-                        <TextField required label="Instrument" variant='outlined' className='textfield'/>
+               <FormControl as ={Col}>
+                  <Box> 
+                        <TextField
+                        value={regData.instrument1}  
+                        onChange={(e) => setRegData({...regData, instrument1: e.target.value})} 
+                        type ="String"
+                        required label="Instrument" 
+                        variant='outlined' 
+                        className='textfield'/>
                      </Box>
-               </Form.Group>
+               </FormControl>
 
                {/*Instrument2*/}
-               <Form.Group as ={Col}>
-                  <Box
-                  onChange={(e) => setRegData({...regData, instrument2: e.target.value})} 
-                  value={regData.instrument2}  
-                  type ="String">
-                     <TextField label="Secondary Instrument" variant='outlined' className='textfield'/>
+               <FormControl as ={Col}>
+                  <Box>
+                     <TextField 
+                     value={regData.instrument2}  
+                     onChange={(e) => setRegData({...regData, instrument2: e.target.value})} 
+                     type ="String" 
+                     label="Secondary Instrument" 
+                     variant='outlined' 
+                     className='textfield'/>
                   </Box>
-               </Form.Group>
+               </FormControl>
                </Row>
 
                <Row>
 
                {/*School*/}
                <FormControl style={{marginBottom: "20px"}}>
-                  <Box
-                     onChange={(e) => setRegData({...regData, school: e.target.value})} 
-                     value={regData.school}   
-                     type ="String"
-                     >
-                        <TextField required label="School" variant='outlined' style={{width:"500px"}}/>
+                  <Box>
+                        <TextField
+                        value={regData.school}   
+                        onChange={(e) => setRegData({...regData, school: e.target.value})} 
+                        type ="String"
+                        required label="School" 
+                        variant='outlined' 
+                        style={{width:"500px"}}/>
                   </Box>
                </FormControl>
                </Row>
@@ -155,9 +169,9 @@ function StudentReg() {
                         <MenuItem value ={7}>7</MenuItem>
                         <MenuItem value ={8}>8</MenuItem>
                         <MenuItem value ={9}>9</MenuItem>
-                        <MenuItem value ={1}>10</MenuItem>
-                        <MenuItem value ={1}>11</MenuItem>
-                        <MenuItem value ={1}>12</MenuItem>
+                        <MenuItem value ={10}>10</MenuItem>
+                        <MenuItem value ={11}>11</MenuItem>
+                        <MenuItem value ={12}>12</MenuItem>
                      </Select>
                   </FormControl>
                
