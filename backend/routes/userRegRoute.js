@@ -1,5 +1,6 @@
 const router = require('express').Router();
-let UserRegistration = require('../models/userRegistration.model');
+const UserRegistration = require('../models/userRegistration.model');
+
 
 // GET 
 //Base pull of info
@@ -15,14 +16,11 @@ router.route('/add').post((req,res) => {
    const lastName = req.body.lastName;
    const userEmail = req.body.userEmail;
    const userPassword = req.body.userPassword;
-   const passwordConfirmation = req.body.passwordConfirmation;
-
    const newUser = new UserRegistration({
        firstName,
        lastName,
        userEmail,
        userPassword,
-       passwordConfirmation,
    });
 
    newUser.save()
@@ -61,6 +59,5 @@ router.route('/update/:id').post((req,res) => {
         })
         .catch(err => res.status(400).json('Error: ' + err));
 });
-
 
 module.exports = router; 

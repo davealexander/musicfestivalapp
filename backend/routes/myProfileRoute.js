@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let MyProfile = require('../models/myprofile.model');
+const MyProfile = require('../models/myprofile.model');
 
 // GET 
 //Base pull of info

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Sidenav from './components/Sidenav/Sidenav';
@@ -13,10 +14,16 @@ import MyProfile from './components/MyProfile/MyProfile';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import MyProfileForm from './components/MyProfileForm/MyProfileForm';
+import { UserContext } from './context/authProvider';
+
 
 function App() {
+  const [user, setUser]= useState(null);
   return (
+    
    <Router>
+     {console.log(user)}
+     <UserContext.Provider value={{user,setUser}}>
      <Sidenav></Sidenav>
      <Banner></Banner>
      <Routes>
@@ -28,6 +35,7 @@ function App() {
        <Route path='/register' element={<Register/>}></Route>
        <Route path='/MyProfileForm' element={<MyProfileForm/>}></Route>
      </Routes>
+    </UserContext.Provider>
    </Router>
   );
 }

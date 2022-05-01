@@ -9,17 +9,19 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Sidenav.css'
 
+
 function Sidenav() {
-    return (
-      <Container className='sideNavContainer'>
+  
+  return (
+      <Container  className='sideNavContainer'>
        <div className="sideNav"> 
-          <Navbar className='navColor' variant="dark">    
+          <Navbar  className='navColor' variant="dark">    
           <ul>
               <h2>Maine Music Educator Association</h2>
-              <li className = 'navText'><a href='/'><HomeIcon/><span className='invisible'>_</span>Home</a></li>
-              <li className = 'navText'><a href='/MyProfile'><AccountCircleIcon/><span className='invisible'>_</span>My Profile</a></li>
-              <li className = 'navText'><a href='/StudentRegistration'><PersonAddIcon/><span className='invisible'>_</span>Registration</a></li>
-              <li className = 'navText'><a href='/Scoresheets'><AssignmentIcon/><span className='invisible'>_</span>Scoresheets</a></li>
+              <li className = 'navText' ><Link to='/'><HomeIcon/><span className='invisible'>_</span>Home</Link></li>
+              <li className = 'navText' ><Link to="/MyProfile"><AccountCircleIcon/><span className='invisible'>_</span>MyProfile</Link></li>
+              <li className = 'navText' ><Link to='/StudentRegistration'><PersonAddIcon/><span className='invisible'>_</span>Registration</Link></li>
+              <li className = 'navText' ><Link to='/Scoresheets'><AssignmentIcon/><span className='invisible'>_</span>Scoresheets</Link></li>
 
           </ul>
         </Navbar>

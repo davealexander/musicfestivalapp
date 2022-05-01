@@ -28,19 +28,13 @@ const userRegSchema = new Schema({
         trim: true,
         minlength: 6,
     },
-    passwordConfirmation: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 6,
-    },
 }, 
 {
     timestamps: true,
 });
 
 userRegSchema.pre('save', async function(next){
-    const salt = await bcrypt.genSalt();
+    const salt = await bcrypt.genSalt(10);
     this.userPassword = await bcrypt.hash(this.userPassword,salt);
     this.passwordConfirmation = await bcrypt.hash(this.passwordConfirmation,salt);
     next();

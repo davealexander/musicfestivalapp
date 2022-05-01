@@ -16,6 +16,7 @@ const port = process.env.PORT || 5001;
 app.use(cors());
 //server can accept json in the body of a request
 app.use(express.json());
+//Middleware for cookies 
 
 //Connection to Database
 const uri = process.env.ATLAS_URI;
