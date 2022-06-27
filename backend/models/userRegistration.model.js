@@ -28,6 +28,12 @@ const userRegSchema = new Schema({
         trim: true,
         minlength: 6,
     },
+    passwordConfirmation:{
+        type: String,
+        required: true,
+        trim: true,
+        minlength:6,
+    }
 }, 
 {
     timestamps: true,

@@ -1,8 +1,13 @@
+.annoContainer{
+    position: relative;
+    margin-left: 100px;
+
+}
 .annoCard{
     width: 20em;
     height: 50em;
     margin-top:50px;
-    margin-left:80px;
+    margin-left:100px;
 }
 .announcements{
     padding: 10px 0px 10px 10px;

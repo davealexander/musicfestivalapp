@@ -22,3 +22,12 @@
     color:rgb(253,182,20);
     background-color: navy;
 }
+.MMEAlogo{
+    position: relative;
+    margin-left: 100px;
+}
+
+.registerbutton{
+    margin-left: 2000px;
+    backgroundColor: rgb(253,182,20);
+}

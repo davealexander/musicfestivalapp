@@ -16,12 +16,14 @@ router.route('/add').post((req,res) => {
    const lastName = req.body.lastName;
    const userEmail = req.body.userEmail;
    const userPassword = req.body.userPassword;
+   const passwordConfirmation = req.body.passwordConfirmation;
    const newUser = new UserRegistration({
        firstName,
        lastName,
        userEmail,
        userPassword,
-   });
+       passwordConfirmation
+    });
 
    newUser.save()
     .then(() => res.json('User Registered!'))

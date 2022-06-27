@@ -22,7 +22,6 @@ function App() {
   return (
     
    <Router>
-     {console.log(user)}
      <UserContext.Provider value={{user,setUser}}>
      <Sidenav></Sidenav>
      <Banner></Banner>

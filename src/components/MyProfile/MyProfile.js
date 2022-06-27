@@ -46,7 +46,7 @@ function MyProfile() {
                 {console.log(user)}
                 <div style={{width:"500px", fontSize:"20px"}} className="profileCard">
                     <Form.Label style={{fontSize:"30px"}}>My Profile 
-                    <Button onClick={routeChange} variant="primary" type="submit" style={{backgroundColor: "rgb(253,182,20)"}}>
+                    <Button onClick={routeChange} variant="primary" type="submit" style={{backgroundColor: "rgb(253,182,20)", marginLeft:"10px"}}>
                         Edit
                     </Button></Form.Label>
                     <p>Name: {regData.firstName} {regData.lastName}</p>

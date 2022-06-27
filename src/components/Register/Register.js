@@ -72,9 +72,9 @@ function Register() {
             </section> */}
             <Row>
                 <div style={{width:"100px"}} className="logoCard">
-                    <img className='MMEAlogo' src={MMEAlogo} alt = "MMEAlogo" width="375" height="375"></img> 
-                    <Button onClick={routeChange} variant="primary" type="submit" style={{backgroundColor: "rgb(253,182,20)"}}>
-                        ALREADY HAVE AN ACCOUNT?
+                    <img className='MMEAlogo' src={MMEAlogo} alt = "MMEAlogo" width="275" height="275"></img> 
+                    <Button onClick={routeChange} variant="outlined" type="submit" style={{backgroundColor: "rgb(253,182,20)", marginLeft:"200px"}}>
+                        EXISTING USER?
                     </Button>
                 </div>
 
@@ -131,7 +131,7 @@ function Register() {
                             value={regData.passwordConfirmation} />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">Submit</Button>
+                    <Button variant="outlined" type="submit" style={{backgroundColor: "rgb(253,182,20)"}}>Submit</Button>
                 </Form>
             </div>
         </Row>

@@ -1,3 +1,7 @@
+.todoContainer{
+    position: relative;
+    margin-left: 120px;
+}
 .todoCard{
     width: 20em;
     height: 50em;

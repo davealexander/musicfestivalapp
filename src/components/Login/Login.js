@@ -36,8 +36,8 @@ const handleSubmit = (e) => {
         <Container>
             <Row>
                 <div style={{width:"300px"}} className="logoCard">
-                    <img className='MMEAlogo' src={MMEAlogo} alt = "MMEAlogo" width="375" height="375"></img> 
-                    <Button onClick={routeChange} variant="primary" type="submit" style={{backgroundColor: "rgb(253,182,20)"}}>
+                    <img className='MMEAlogo' src={MMEAlogo} alt = "MMEAlogo" width="275" height="275"></img> 
+                    <Button onClick={routeChange} variant="outlined" type="submit" style={{marginLeft:"200px",backgroundColor: "rgb(253,182,20"}}>
                         Register
                     </Button>
                 </div>
@@ -66,7 +66,6 @@ const handleSubmit = (e) => {
                         </Button>
 
                     </Form>
-                    {console.log(regData)}
                 </div>
             </Row>
         </Container>

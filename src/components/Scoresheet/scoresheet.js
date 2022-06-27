@@ -58,7 +58,7 @@ useEffect(() => {
 
     return (
 
-       <Container>
+       <Container className='scoresheet'>
         <Row style={{paddingLeft: "200px"}}>
         <div className= "scoresheet"  style={{width:"1000px"}}> 
            <Form onSubmit={handleSubmit}>

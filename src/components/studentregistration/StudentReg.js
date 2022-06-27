@@ -164,7 +164,7 @@ function StudentReg() {
                      value={regData.grade}
                      onChange={(e) => setRegData({...regData, grade: e.target.value})}
                      >
-                        <MenuItem required value ={""}>-</MenuItem>
+                        <MenuItem value ={""}>-</MenuItem>
                         <MenuItem value ={6}>6</MenuItem>
                         <MenuItem value ={7}>7</MenuItem>
                         <MenuItem value ={8}>8</MenuItem>

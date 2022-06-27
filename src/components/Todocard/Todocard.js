@@ -5,7 +5,7 @@ import './Todocard.css'
 
 function Todocard() {
     return (
-        <Container>
+        <Container className='todoContainer'>
         <div> 
             <Card className='todoCard'>
                 <h3 className='todos'>To-do List</h3>

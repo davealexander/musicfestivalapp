@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 
 function Announcecard() {
     return (
-        <Container>
+        <Container className='annoContainer'>
         <div> 
             <Card className='annoCard'>
                 <h3 className='announcements'>Announcements</h3>
